@@ -40,37 +40,41 @@ const Works = () => {
         setSelectedCategory(cat)
     }
 
-    const fetchDesigns= useMemo(async()=>{
 
-        try {
-            setLoading(true)
-            const response = await axios.get("/designs.json")
-            setDesigns(response.data)
-                  sessionStorage.setItem(selectedCategory, JSON.stringify(response.data)) // Update sessionStorage with filtered designs
-
-            // console.log(response.data)
-        } catch (error) {
-            console.error(error)
-        } finally{
-            setLoading(false)
-        }
-
-    },[selectedCategory])
     useEffect(() => {
 
-          const cachedDesigns = sessionStorage.getItem(selectedCategory);
 
-  if (cachedDesigns) {
-    const parsedDesigns = JSON.parse(cachedDesigns);
-    setLoading(false);
-    setDesigns(parsedDesigns)
+        const fetchDesigns = async () => {
 
-    return;
-  }
+            try {
+                setLoading(true)
+                const response = await axios.get("/designs.json")
+                setDesigns(response.data)
+                sessionStorage.setItem(selectedCategory, JSON.stringify(response.data)) // Update sessionStorage with filtered designs
 
-       fetchDesigns()
+                // console.log(response.data)
+            } catch (error) {
+                console.error(error)
+            } finally {
+                setLoading(false)
+            }
 
-    }, [selectedCategory,fetchDesigns])
+        }
+
+        const cachedDesigns = sessionStorage.getItem(selectedCategory);
+
+        if (cachedDesigns) {
+
+            const parsedDesigns = JSON.parse(cachedDesigns);
+            setLoading(false);
+            setDesigns(parsedDesigns)
+
+            return;
+        }
+
+        fetchDesigns()
+
+    }, [selectedCategory])
 
 
     const filteredDesigns = designs.filter(d => d.category === selectedCategory)
@@ -104,7 +108,7 @@ const Works = () => {
             <div className='grid //gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4c w-full justify-center items-center //gap-x-10 grid-rows-[auto] mt-4' style={{ gridGap: "20px" }}>
                 {loading ? (<p className='text-center'>Loading...</p>) : (
                     filteredDesigns.map(design => {
-                        return <Design design={design} key={design.id}  filteredDesigns={filteredDesigns}/>
+                        return <Design design={design} key={design.id} filteredDesigns={filteredDesigns} />
                     })
                 )}
 
