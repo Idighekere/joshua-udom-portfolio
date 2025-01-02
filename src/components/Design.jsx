@@ -4,8 +4,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Lightbox from "yet-another-react-lightbox";
 
-const Design = ({ design, index, open, handleOpen }) => {
+const Design = ({ design,filteredDesigns }) => {
 
     // const [open, setOpen] = useState(false)
     // const [index, setIndex] = useState(0)
@@ -14,8 +15,16 @@ const Design = ({ design, index, open, handleOpen }) => {
     //     setIndex(i);
     //     setOpen(true);
     // }
-    console.log(index)
-    console.log(design.id)
+    // console.log(index)
+    // console.log(design.id)
+        const [open, setOpen] = useState(false)
+    const [index, setIndex] = useState(0)
+
+    const handleOpen = (i) => {
+        setIndex(i);
+        setOpen(true);
+    }
+
     return (
         <div >
             <div className="flex grid-gap- max-h-[500px]">
@@ -24,7 +33,7 @@ const Design = ({ design, index, open, handleOpen }) => {
                     index={design.id}
                     src={design.src}
                     alt={design.name}
-                    className="max-w-auto max-h-auto h-auto rounded-lg hover:drop-shadow-md cursor-pointer border-bg-primary-500/50 border-2"
+                    className="h-auto border-2 rounded-lg cursor-pointer max-w-auto max-h-auto hover:drop-shadow-md border-bg-primary-500/50"
                     effect="opacity"
                     loading="lazy"
                     data-aos="zoom-in"
@@ -33,6 +42,7 @@ const Design = ({ design, index, open, handleOpen }) => {
 
                 />
             </div>
+            {open && (<Lightbox open={open} close={() => setOpen(false)} slides={filteredDesigns} index={design.id} />)}
 
         </div >
     );
