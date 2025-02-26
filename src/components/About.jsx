@@ -13,7 +13,7 @@ const About = () => {
                 <h2 className='text-3xl font-[500] mb-10 border-b-4 inline-block border-primary-500'>ABOUT ME</h2>
                 <div className="flex flex-col w-full gap-4 md:flex-row">
                     <div className="p-5 duration-150 border-2 rounded-md cursor-pointer dshadow-md hover:bg-primary-500 border-primary-400/40" data-aos="fade-right">
-                        <p className='text-xl text-justivfy' >I'm Joshua, a graphic designer in Nigeria with 1+ year of experience. I specialize in creating functional designs that will help communicate a brand's service or product to it's target audience</p>
+                        <p className='text-xl text-justivfy' >I'm Joshua, a graphic designer in Nigeria with 2+ year of experience. I specialize in creating functional designs that will help communicate a brand's service or product to it's target audience</p>
                     </div>
                     <div className="p-5 duration-150 border-2 rounded-md cursor-pointer dshadow-md border-primary-400/40 w-a1/2 hover:bg-primary-500" data-aos="fade-left">
 
