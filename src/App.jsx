@@ -1,16 +1,30 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
 import Home from "./pages/Home"
-function App() {
+import ProjectPage from "./pages/ProjectPage"
+import Projects from "./pages/Projects"
+import { AnimatePresence } from 'framer-motion'
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
 
   return (
-    <Router>
-      <Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/project/:slug" element={<ProjectPage />} />
       </Routes>
+    </AnimatePresence>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AnimatedRoutes />
     </Router>
   )
 }
