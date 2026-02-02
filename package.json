@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "studio": "cd studio && sanity dev",
-    "studio:build": "cd studio && sanity build ../dist/studio"
+    "studio:build": "cd studio && sanity build ../dist/studio -y"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.2",
