@@ -1,8 +1,9 @@
-import { defineCliConfig } from 'sanity/cli'
-export default {
+/* eslint-disable no-undef */
+import { defineCliConfig } from "sanity/cli";
+
+export default defineCliConfig({
   api: {
-    projectId: import.meta.env.SANITY_STUDIO_PROJECT_ID || 'rklan5yk',
-    dataset: import.meta.env.SANITY_STUDIO_DATASET || 'production'
-  },
-  studioHost: 'joshua-udom'
-}
+    projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+    dataset: process.env.SANITY_STUDIO_DATASET || 'production'
+  }
+})

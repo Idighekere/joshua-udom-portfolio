@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run studio:build",
     "lint": "eslint .",
     "preview": "vite preview",
     "studio": "cd studio && sanity dev",
-    "studio:build": "cd studio && sanity build dist/studio"
+    "studio:build": "cd studio && sanity build ../dist/studio"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.2",
