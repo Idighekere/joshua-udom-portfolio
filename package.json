@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run studio:build",
+    "build": "vite build && npm run studio:build && npm run studio:fix-paths",
     "lint": "eslint .",
     "preview": "vite preview",
     "studio": "cd studio && sanity dev",
-    "studio:build": "cd studio && sanity build ../dist/studio -y"
+    "studio:build": "cd studio && sanity build ../dist/studio -y",
+    "studio:fix-paths": "sed -i 's|href=\"/static/|href=\"/studio/static/|g; s|src=\"/static/|src=\"/studio/static/|g' dist/studio/index.html"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.18",

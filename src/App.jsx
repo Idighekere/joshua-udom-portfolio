@@ -1,11 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
-import './App.css'
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
-import Home from "./pages/Home"
-import ProjectPage from "./pages/ProjectPage"
-import Projects from "./pages/Projects"
-import { AnimatePresence } from 'framer-motion'
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import ProjectPage from "./pages/ProjectPage";
+import Projects from "./pages/Projects";
+import { AnimatePresence } from "framer-motion";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -18,15 +22,15 @@ const AnimatedRoutes = () => {
         <Route path="/project/:slug" element={<ProjectPage />} />
       </Routes>
     </AnimatePresence>
-  )
-}
+  );
+};
 
 function App() {
   return (
     <Router>
       <AnimatedRoutes />
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

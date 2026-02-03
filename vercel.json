@@ -1,11 +1,19 @@
 {
     "rewrites": [
         {
-            "source": "/studio/((?!.*\\.).*)",
+            "source": "/studio",
             "destination": "/studio/index.html"
         },
         {
-            "source": "/((?!studio|.*\\.).*)",
+            "source": "/studio/",
+            "destination": "/studio/index.html"
+        },
+        {
+            "source": "/studio/:path((?!static/).*)",
+            "destination": "/studio/index.html"
+        },
+        {
+            "source": "/((?!studio|api).*)",
             "destination": "/index.html"
         }
     ]
