@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Button from "../ui/Button";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+    <section className="relative md:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Orbs */}
       <div className="bg-orb w-96 h-96 bg-primary-500/20 top-20 left-10 blur-[100px]"></div>
       <div className="bg-orb w-64 h-64 bg-secondary-500/30 bottom-20 right-10 blur-[80px] animation-delay-2000"></div>

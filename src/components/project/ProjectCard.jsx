@@ -21,7 +21,7 @@ const ProjectCard = ({ project }) => {
       >
         {project.featuredImage && (
           <LazyLoadImage
-            src={urlFor(project.featuredImage).width(600).url()}
+            src={urlFor(project.featuredImage).width(400).quality(75).auto("format").url()}
             alt={project.title}
             effect="blur"
             className="w-full h-auto transition-transform duration-500 group-hover:scale-110"

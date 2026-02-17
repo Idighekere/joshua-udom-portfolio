@@ -1,4 +1,3 @@
-import React from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { StarCircleIcon } from "@hugeicons/core-free-icons";
 import ProjectsGrid from "../project/ProjectsGrid";

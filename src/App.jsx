@@ -9,6 +9,12 @@ import Home from "./pages/Home";
 import ProjectPage from "./pages/ProjectPage";
 import Projects from "./pages/Projects";
 import { AnimatePresence } from "framer-motion";
+import { prefetch } from "./hooks/useSanityData";
+import { queries } from "./lib/queries";
+
+// Start fetching projects immediately on app load — data will be
+// cached and ready by the time components mount
+prefetch(queries.projects);
 
 const AnimatedRoutes = () => {
   const location = useLocation();

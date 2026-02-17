@@ -74,7 +74,7 @@ const ProjectPage = () => {
     <div className="min-h-screen text-white bg-black">
       <Header />
       <PageTransition>
-        <div className=" mb-8">
+        <div className="px-4 mb-8">
           {/* Hero Image */}
           <div className="mx-auto max-w-7xl">
             <Link
@@ -165,20 +165,32 @@ const ProjectPage = () => {
                 <div className="space-y-4 py-4">
                   {project.client && (
                     <div>
-                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">Client</span>
-                      <span className="text-sm font-medium text-white">{project.client}</span>
+                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                        Client
+                      </span>
+                      <span className="text-sm font-medium text-white">
+                        {project.client}
+                      </span>
                     </div>
                   )}
                   {project.year && (
                     <div>
-                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">Year</span>
-                      <span className="text-sm font-medium text-white">{project.year}</span>
+                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                        Year
+                      </span>
+                      <span className="text-sm font-medium text-white">
+                        {project.year}
+                      </span>
                     </div>
                   )}
                   {project.category && (
                     <div>
-                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">Category</span>
-                      <span className="text-sm font-medium text-white capitalize">{project.category}</span>
+                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                        Category
+                      </span>
+                      <span className="text-sm font-medium text-white capitalize">
+                        {project.category}
+                      </span>
                     </div>
                   )}
                 </div>
