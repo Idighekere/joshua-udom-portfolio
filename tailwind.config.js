@@ -13,7 +13,8 @@ export default {
         'neutral-300': '#f5f4f3'
       },
       fontFamily: {
-        sans: `"Bricolage Grotesque", sans-serif`
+        sans: `"Bricolage Grotesque", sans-serif`,
+        satoshi: `"Satoshi", sans-serif`
       },
       animation: {
         bounce200: 'bounce 1s infinite 200ms',
