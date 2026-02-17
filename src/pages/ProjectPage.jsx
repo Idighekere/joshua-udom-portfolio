@@ -75,10 +75,9 @@ const ProjectPage = () => {
       <Header />
       <PageTransition>
         <div className="px-4 mb-8">
-          {/* Hero Image */}
           <div className="mx-auto max-w-7xl">
             <Link
-              to="/"
+              to="/projects"
               className="inline-flex items-center mb-6 transition-colors text-neutral-400 hover:text-white"
             >
               <HugeiconsIcon
