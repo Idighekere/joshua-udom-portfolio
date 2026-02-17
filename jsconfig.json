@@ -4,7 +4,16 @@
     "checkJs": false,
     "allowJs": true,
     "module": "ESNext",
-    "target": "ESNext"
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "noEmit": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
-  "exclude": ["node_modules"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
