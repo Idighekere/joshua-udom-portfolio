@@ -1,14 +1,11 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Lightbox from "yet-another-react-lightbox";
 
 const Design = ({ design, filteredDesigns }) => {
   const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [ setIndex] = useState(0);
 
   const handleOpen = (i) => {
     setIndex(i);

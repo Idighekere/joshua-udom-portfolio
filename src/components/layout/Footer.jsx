@@ -1,5 +1,6 @@
 import React from "react";
-import { FiArrowUp } from "react-icons/fi";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowUp01Icon } from "@hugeicons/core-free-icons";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -25,7 +26,7 @@ const Footer = () => {
           onClick={scrollToTop}
           className="p-3 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors group"
         >
-          <FiArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+          <HugeiconsIcon icon={ArrowUp01Icon} size={20} color="currentColor" className="group-hover:-translate-y-1 transition-transform" />
         </button>
       </div>
     </footer>

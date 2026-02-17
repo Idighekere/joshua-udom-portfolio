@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import "./App.css";
 import {
   BrowserRouter as Router,
   Routes,

@@ -18,7 +18,6 @@ export const queries = {
     year,
     description,
     caseStudy,
-    tools,
     featured
   }`,
   siteSettings: `*[_type == "siteSettings"][0]`,

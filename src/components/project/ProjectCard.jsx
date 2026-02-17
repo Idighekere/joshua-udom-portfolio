@@ -13,7 +13,7 @@ const ProjectCard = ({ project }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      className="relative overflow-hidden border group rounded-xl bg-neutral-900 border-neutral-800"
+      className="relative overflow-hidden border group rounded-none sm:rounded-xl bg-neutral-900 border-neutral-800"
     >
       <Link
         to={`/project/${project.slug?.current}`}
@@ -30,7 +30,7 @@ const ProjectCard = ({ project }) => {
         )}
 
         {/* Overlay */}
-        <div className="absolute inset-0 flex flex-col justify-end p-6 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:opacity-100">
+        <div className="absolute inset-0 flex flex-col justify-end p-6 transition-opacity duration-300 0 bg-gradient-to-t from-black/90 via-black/40 to-transparent ">
           <Badge className="mb-2 w-fit">{project.category}</Badge>
           <h3 className="mb-2 text-xl font-bold text-white">{project.title}</h3>
           <span className="text-sm font-medium text-primary-400">

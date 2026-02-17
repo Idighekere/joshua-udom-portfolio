@@ -1,5 +1,3 @@
-import project from './project'
-import siteSettings from './siteSettings'
-import category from './category'
+import project from "./project";
 
-export const schemaTypes = [project, siteSettings, category]
+export const schemaTypes = [project];

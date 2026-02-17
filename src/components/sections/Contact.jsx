@@ -1,32 +1,32 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FiFacebook, FiPhone, FiMail } from "react-icons/fi";
-import { FaWhatsapp } from "react-icons/fa";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Facebook01Icon, CallIcon, Mail01Icon, WhatsappIcon } from "@hugeicons/core-free-icons";
 
 const socialLinks = [
   {
     name: "Facebook",
     link: "https://facebook.com/profile.php?id=61558207507000",
     color: "hover:bg-[#1877F2]",
-    icon: FiFacebook,
+    icon: Facebook01Icon,
   },
   {
     name: "Whatsapp",
     link: "https://wa.me/+2348171012904",
     color: "hover:bg-[#25D366]",
-    icon: FaWhatsapp,
+    icon: WhatsappIcon,
   },
   {
     name: "Phone Call",
     link: "tel:+2348171012904",
     color: "hover:bg-[#34b7f1]",
-    icon: FiPhone,
+    icon: CallIcon,
   },
   {
     name: "Send Mail",
     link: "mailto:udomjosh04@gmail.com",
     color: "hover:bg-[#d44638]",
-    icon: FiMail,
+    icon: Mail01Icon,
   },
 ];
 
@@ -59,7 +59,7 @@ const Contact = () => {
               className={`flex flex-col items-center justify-center p-8 rounded-2xl bg-neutral-900 border border-neutral-800 transition-all duration-300 group ${link.color} hover:border-transparent cursor-pointer`}
             >
               <div className="p-4 rounded-full bg-white/5 group-hover:bg-white/20 transition-colors mb-4">
-                <link.icon className="w-8 h-8 text-white" />
+                <HugeiconsIcon icon={link.icon} size={32} color="white" />
               </div>
               <span className="font-medium text-lg">{link.name}</span>
             </motion.a>
