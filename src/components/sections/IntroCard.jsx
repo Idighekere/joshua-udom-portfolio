@@ -22,7 +22,7 @@ const IntroCard = () => {
       >
         <div className="flex flex-col-reverse lg:flex-row lg:items-stretch">
           {/* Text Content */}
-          <div className="flex-1 p-8 md:p-12 lg:p-14 flex flex-col justify-center">
+          <div className="flex-1 p-4 md:p-10 /lg:p-12 flex flex-col justify-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ const IntroCard = () => {
               Hello there 👋
             </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-white whitespace-nowrap">
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-none font-bold mb-4 leading-tight text-white /whitespace-nowrap">
               I&apos;m{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-white  pb-2">
                 Joshua Udom
