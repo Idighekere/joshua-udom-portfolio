@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import Masonry from "react-masonry-css";
-import { useProject } from "../hooks/useProjects";
+import { useProject, useProjects } from "../hooks/useProjects";
 import {
   PageTransition,
   Header,
@@ -12,22 +12,37 @@ import {
 import CaseStudyContent from "../components/project/CaseStudyContent";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { urlFor } from "../lib/sanity";
 import { motion, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { ArrowLeft02Icon } from "@hugeicons/core-free-icons";
+import { ArrowLeft02Icon, ArrowRight02Icon } from "@hugeicons/core-free-icons";
 import emailjs from "@emailjs/browser";
 
 const ProjectPage = () => {
   const { slug } = useParams();
   const { project, loading, error } = useProject(slug);
+  const { projects } = useProjects();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(null);
   const formRef = useRef();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [slug]);
+
+  const index = projects?.findIndex((p) => p.slug?.current === slug) ?? -1;
+  const prev =
+    index > 0 && projects[index - 1]?.slug?.current
+      ? projects[index - 1]
+      : null;
+  const next =
+    index >= 0 && index < (projects?.length ?? 0) - 1 && projects[index + 1]?.slug?.current
+      ? projects[index + 1]
+      : null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -309,6 +324,62 @@ const ProjectPage = () => {
           </div>
         </div>
       </PageTransition>
+
+      {prev || next ? (
+        <div className="px-4">
+          <div className="mx-auto max-w-7xl mt-16">
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
+              {prev ? (
+                <Link
+                  to={`/project/${prev.slug.current}`}
+                  className="group flex-1 flex items-center gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-5 transition-colors hover:border-primary-500/40"
+                >
+                  <HugeiconsIcon
+                    icon={ArrowLeft02Icon}
+                    size={20}
+                    color="currentColor"
+                    className="text-neutral-500 group-hover:text-primary-400 transition-colors"
+                  />
+                  <div>
+                    <span className="block text-xs uppercase tracking-wider text-neutral-500">
+                      Previous Project
+                    </span>
+                    <span className="text-sm font-medium text-white">
+                      {prev.title}
+                    </span>
+                  </div>
+                </Link>
+              ) : (
+                <span />
+              )}
+              {next ? (
+                <Link
+                  to={`/project/${next.slug.current}`}
+                  className="group flex-1 flex items-center justify-end gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-5 text-right transition-colors hover:border-primary-500/40"
+                >
+                  <div>
+                    <span className="block text-xs uppercase tracking-wider text-neutral-500">
+                      Next Project
+                    </span>
+                    <span className="text-sm font-medium text-white">
+                      {next.title}
+                    </span>
+                  </div>
+                  <HugeiconsIcon
+                    icon={ArrowRight02Icon}
+                    size={20}
+                    color="currentColor"
+                    className="text-neutral-500 group-hover:text-primary-400 transition-colors"
+                  />
+                </Link>
+              ) : (
+                <span />
+              )}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <Footer />
 
       <Lightbox

@@ -1,3 +1,5 @@
+import GalleryInput from "../components/GalleryInput";
+
 export default {
   name: "project",
   title: "Design Project",
@@ -28,10 +30,11 @@ export default {
       name: "gallery",
       title: "Gallery",
       description:
-        "Upload a batch of project designs here (drag multiple images in or select several at once). Separate from the Featured Image.",
+        "Upload a batch of project designs here (use 'Upload multiple images', or drag files in). Separate from the Featured Image.",
       type: "array",
       of: [{ type: "image", options: { hotspot: true } }],
       options: { layout: "grid" },
+      components: { input: GalleryInput },
     },
     { name: "client", title: "Client Name", type: "string" },
     { name: "year", title: "Year", type: "string" },
