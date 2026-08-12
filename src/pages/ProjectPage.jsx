@@ -83,7 +83,9 @@ const ProjectPage = () => {
     );
 
   const slides =
-    project.gallery?.map((img) => ({ src: urlFor(img).url() })) || [];
+    project.gallery?.map((img) => ({
+      src: urlFor(img).width(1920).quality(80).auto("format").url(),
+    })) || [];
 
   return (
     <div className="min-h-screen text-white bg-black">
@@ -151,7 +153,7 @@ const ProjectPage = () => {
                       <motion.div
                         key={idx}
                         whileHover={{ scale: 1.02 }}
-                        className="mb-4 relative rounded-xl overflow-hidden cursor-pointer"
+                        className="group mb-4 relative rounded-xl overflow-hidden cursor-pointer"
                         onClick={() => {
                           setPhotoIndex(idx);
                           setLightboxOpen(true);
@@ -162,6 +164,27 @@ const ProjectPage = () => {
                           alt={`Gallery ${idx + 1}`}
                           className="w-full h-auto block"
                         />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 bg-black/40 group-hover:opacity-100">
+                          <div className="flex flex-col items-center gap-1 text-white">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="28"
+                              height="28"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <circle cx="11" cy="11" r="8" />
+                              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                              <line x1="11" y1="8" x2="11" y2="14" />
+                              <line x1="8" y1="11" x2="14" y2="11" />
+                            </svg>
+                            <span className="text-xs font-medium">Click to view</span>
+                          </div>
+                        </div>
                       </motion.div>
                     ))}
                   </Masonry>
