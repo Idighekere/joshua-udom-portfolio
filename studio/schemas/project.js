@@ -9,12 +9,14 @@ export default {
       title: "Slug",
       type: "slug",
       options: { source: "title", maxLength: 96 },
+      validation: (Rule) =>
+        Rule.required().error("Generate a slug before publishing"),
     },
     {
       name: "category",
       title: "Category",
       type: "string",
-      options: { list: ["flyer", "church", "social", "branding"] },
+      options: { list: ["flyer", "church", "social", "event branding"] },
     },
     {
       name: "featuredImage",
@@ -25,11 +27,21 @@ export default {
     {
       name: "gallery",
       title: "Gallery",
+      description:
+        "Upload a batch of project designs here (drag multiple images in or select several at once). Separate from the Featured Image.",
       type: "array",
-      of: [{ type: "image" }],
+      of: [{ type: "image", options: { hotspot: true } }],
+      options: { layout: "grid" },
     },
     { name: "client", title: "Client Name", type: "string" },
     { name: "year", title: "Year", type: "string" },
+    {
+      name: "collaborators",
+      title: "Collaborators",
+      type: "array",
+      of: [{ type: "string" }],
+      description: "Names of people who worked on this (team) project",
+    },
     { name: "description", title: "Short Description", type: "text" },
     {
       name: "caseStudy",

@@ -10,7 +10,7 @@ const categories = [
   { name: "Flyer Designs", category: "flyer" },
   { name: "Church Designs", category: "church" },
   { name: "Social Media", category: "social" },
-  { name: "Branding", category: "branding" },
+  { name: "Event Branding", category: "event branding" },
 ];
 
 const Projects = () => {

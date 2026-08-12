@@ -16,6 +16,7 @@ export const queries = {
     gallery,
     client,
     year,
+    collaborators,
     description,
     caseStudy,
     featured

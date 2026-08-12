@@ -96,7 +96,7 @@ const ProjectPage = () => {
               {project.title}
             </motion.h1>
             <div className="flex flex-wrap gap-3">
-              {project.category && <Badge>{project.category}</Badge>}
+              {project.category && <Badge className="capitalize">{project.category}</Badge>}
             </div>
           </div>
 
@@ -143,7 +143,7 @@ const ProjectPage = () => {
                         }}
                       >
                         <img
-                          src={urlFor(img).width(800).url()}
+                          src={urlFor(img).width(800).quality(80).auto("format").url()}
                           alt={`Gallery ${idx + 1}`}
                           className="w-full h-auto block"
                         />
@@ -189,6 +189,16 @@ const ProjectPage = () => {
                       </span>
                       <span className="text-sm font-medium text-white capitalize">
                         {project.category}
+                      </span>
+                    </div>
+                  )}
+                  {project.collaborators?.length > 0 && (
+                    <div>
+                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                        Collaborators
+                      </span>
+                      <span className="text-sm font-medium text-white">
+                        {project.collaborators.join(", ")}
                       </span>
                     </div>
                   )}
