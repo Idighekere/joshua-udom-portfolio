@@ -1,5 +1,4 @@
 import { useParams, Link } from "react-router-dom";
-import Masonry from "react-masonry-css";
 import { useProject, useProjects } from "../hooks/useProjects";
 import {
   PageTransition,
@@ -140,20 +139,16 @@ const ProjectPage = () => {
                 </p>
               )}
 
-              {/* Gallery Grid */}
+              {/* Gallery — horizontal scroll */}
               {project.gallery && project.gallery.length > 0 && (
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold">Project Gallery</h3>
-                  <Masonry
-                    breakpointCols={{ default: 2, 640: 1 }}
-                    className="flex w-auto -ml-4"
-                    columnClassName="pl-4 bg-clip-padding"
-                  >
+                  <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     {project.gallery.map((img, idx) => (
                       <motion.div
                         key={idx}
                         whileHover={{ scale: 1.02 }}
-                        className="group mb-4 relative rounded-xl overflow-hidden cursor-pointer"
+                        className="group relative shrink-0 w-[82%] sm:w-[60%] md:w-[42%] lg:w-[28%] aspect-[4/5] rounded-xl overflow-hidden cursor-pointer snap-start"
                         onClick={() => {
                           setPhotoIndex(idx);
                           setLightboxOpen(true);
@@ -162,7 +157,7 @@ const ProjectPage = () => {
                         <img
                           src={urlFor(img).width(800).quality(80).auto("format").url()}
                           alt={`Gallery ${idx + 1}`}
-                          className="w-full h-auto block"
+                          className="w-full h-full object-cover object-center block transition-transform duration-500 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 bg-black/40 group-hover:opacity-100">
                           <div className="flex flex-col items-center gap-1 text-white">
@@ -187,7 +182,7 @@ const ProjectPage = () => {
                         </div>
                       </motion.div>
                     ))}
-                  </Masonry>
+                  </div>
                 </div>
               )}
             </div>

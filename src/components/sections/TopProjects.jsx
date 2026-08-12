@@ -9,9 +9,9 @@ const TopProjects = ({ limit = 6 }) => {
   const { projects, loading } = useProjects();
 
   const topProjects =
-    projects && projects.length > limit
-      ? projects.slice(0, limit)
-      : projects || [];
+    projects && projects.length > 0
+      ? projects.filter((p) => p.featured).slice(0, limit)
+      : [];
 
   return (
     <section id="works" className="py-24 relative">

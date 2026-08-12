@@ -12,16 +12,16 @@ const ProjectCard = ({ project }) => {
     <>
       {project.featuredImage && (
         <LazyLoadImage
-          src={urlFor(project.featuredImage).width(400).quality(75).auto("format").url()}
+          src={urlFor(project.featuredImage).width(800).quality(80).auto("format").url()}
           alt={project.title}
           effect="blur"
-          className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
-          wrapperClassName="!block w-full h-auto"
+          className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          wrapperClassName="!block absolute inset-0 w-full h-full"
         />
       )}
 
       {/* Overlay */}
-      <div className="absolute inset-0 flex flex-col justify-end p-6 transition-opacity duration-300 0 bg-gradient-to-t from-black/90 via-black/40 to-transparent ">
+      <div className="absolute inset-0 flex flex-col justify-end p-6 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
         <Badge className="mb-2 w-fit capitalize">{project.category}</Badge>
         <h3 className="mb-2 text-xl font-bold text-white">{project.title}</h3>
         <span className="text-sm font-medium text-primary-400">
@@ -33,22 +33,17 @@ const ProjectCard = ({ project }) => {
 
   return (
     <motion.div
-      layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      className="relative overflow-hidden border group rounded-none sm:rounded-xl bg-neutral-900 border-neutral-800"
+      className="group relative overflow-hidden border aspect-[4/5] rounded-none sm:rounded-xl bg-neutral-900 border-neutral-800"
     >
       {slug ? (
-        <Link
-          to={`/project/${slug}`}
-          className="block relative overflow-hidden w-full"
-        >
+        <Link to={`/project/${slug}`} className="block absolute inset-0">
           {cardContent}
         </Link>
       ) : (
-        <div className="block relative overflow-hidden w-full">{cardContent}</div>
+        <div className="block absolute inset-0">{cardContent}</div>
       )}
     </motion.div>
   );
