@@ -326,13 +326,13 @@ const ProjectPage = () => {
       </PageTransition>
 
       {prev || next ? (
-        <div className="px-4">
+        <div className="px-4 mb-16">
           <div className="mx-auto max-w-7xl mt-16">
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
               {prev ? (
                 <Link
                   to={`/project/${prev.slug.current}`}
-                  className="group flex-1 flex items-center gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-5 transition-colors hover:border-primary-500/40"
+                  className="group w-full sm:w-auto flex items-center gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-5 transition-colors hover:border-primary-500/40"
                 >
                   <HugeiconsIcon
                     icon={ArrowLeft02Icon}
@@ -355,7 +355,7 @@ const ProjectPage = () => {
               {next ? (
                 <Link
                   to={`/project/${next.slug.current}`}
-                  className="group flex-1 flex items-center justify-end gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-5 text-right transition-colors hover:border-primary-500/40"
+                  className="group w-full sm:w-auto flex items-center justify-end gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-5 text-right transition-colors hover:border-primary-500/40"
                 >
                   <div>
                     <span className="block text-xs uppercase tracking-wider text-neutral-500">
