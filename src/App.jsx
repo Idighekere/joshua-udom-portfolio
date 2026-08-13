@@ -11,6 +11,7 @@ import Projects from "./pages/Projects";
 import { AnimatePresence } from "framer-motion";
 import { prefetch } from "./hooks/useSanityData";
 import { queries } from "./lib/queries";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 // Start fetching projects immediately on app load — data will be
 // cached and ready by the time components mount
@@ -33,6 +34,7 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <AnimatedRoutes />
     </Router>
   );
