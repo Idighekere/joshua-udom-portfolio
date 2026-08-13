@@ -8,18 +8,18 @@ const components = {
                 return null
             }
             return (
-                <figure className="my-8">
-                    <img
-                        src={urlFor(value).width(800).fit('max').auto('format').url()}
-                        alt={value.alt || 'Project Image'}
-                        className="rounded-xl w-full h-auto border border-neutral-800"
-                    />
-                    {value.caption && (
-                        <figcaption className="mt-2 text-center text-sm text-neutral-500">
-                            {value.caption}
-                        </figcaption>
-                    )}
-                </figure>
+            <figure className="my-8">
+              <img
+                src={urlFor(value).width(800).fit('max').auto('format').url()}
+                alt={value.alt || 'Project Image'}
+                className="rounded-xl !mx-auto w-full !max-w-xl h-auto border border-neutral-800"
+              />
+              {value.caption && (
+                <figcaption className="mt-2 text-center text-sm text-neutral-500">
+                  {value.caption}
+                </figcaption>
+              )}
+            </figure>
             )
         }
     },
