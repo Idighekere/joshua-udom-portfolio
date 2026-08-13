@@ -18,13 +18,13 @@ const socialLinks = [
   },
   {
     name: "Phone Call",
-    link: "tel:+2348171012904",
+    link: "tel:+2347040198190",
     color: "hover:bg-[#34b7f1]",
     icon: CallIcon,
   },
   {
     name: "Send Mail",
-    link: "mailto:udomjosh04@gmail.com",
+    link: "mailto:workwithjoshuaudom@gmail.com",
     color: "hover:bg-[#d44638]",
     icon: Mail01Icon,
   },

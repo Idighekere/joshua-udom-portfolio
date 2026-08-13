@@ -51,7 +51,7 @@ const IntroCard = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="mailto:joshuaudom550@gmail.com">
+              <a href="mailto:workwithjoshuaudom@gmail.com">
                 <Button variant="outline" className="w-full sm:w-auto">
                   Contact Me
                 </Button>
