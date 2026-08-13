@@ -135,15 +135,29 @@ body {
 }
 
 @keyframes float {
-  0% {
-    transform: translate(0, 0);
-  }
+   0% {
+     transform: translate(0, 0);
+   }
 
-  50% {
-    transform: translate(20px, 20px);
-  }
+   50% {
+     transform: translate(20px, 20px);
+   }
 
-  100% {
-    transform: translate(0, 0);
+   100% {
+     transform: translate(0, 0);
+   }
+}
+
+/* ===== Moving border beam (MagicButtons) ===== */
+@keyframes beam-spin {
+  to {
+    transform: rotate(360deg);
   }
+}
+
+.beam-mask {
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
 }
