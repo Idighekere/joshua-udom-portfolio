@@ -161,3 +161,8 @@ body {
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
 }
+
+/* Beam color = primary-400 (#00bce9) so it stays on palette */
+.beam-conic {
+  background-image: conic-gradient(from 0deg, transparent 0deg, #00bce9 20deg, transparent 55deg);
+}

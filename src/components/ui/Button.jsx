@@ -47,7 +47,7 @@ const Button = ({ children, onClick, className = "", variant = "primary", ...pro
         {/* Moving border beam in the primary tone */}
         <span aria-hidden="true"
           className="beam-mask pointer-events-none absolute inset-0 rounded-full p-px opacity-70 transition-opacity duration-300 group-hover:opacity-100">
-          <span className="absolute inset-[-150%] animate-[beam-spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0deg,theme(colors.primary.400)_20deg,transparent_55deg)] group-hover:[animation-duration:2s]" />
+          <span className="absolute inset-[-150%] animate-[beam-spin_4s_linear_infinite] beam-conic group-hover:[animation-duration:2s]" />
         </span>
         <span className="relative">{children}</span>
         {/* Subtle icon indicator revealed on hover */}
