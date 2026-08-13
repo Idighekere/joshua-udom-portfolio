@@ -7,13 +7,6 @@ const ArrowRight = (props) => (
   </svg>
 )
 
-const ArrowUpRight = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-       strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
-    <path d="M7 17 17 7" /><path d="M7 7h10v10" />
-  </svg>
-)
-
 const Button = ({ children, onClick, className = "", variant = "primary", ...props }) => {
   const base = "group relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
 
@@ -50,8 +43,6 @@ const Button = ({ children, onClick, className = "", variant = "primary", ...pro
           <span className="absolute inset-[-150%] animate-[beam-spin_4s_linear_infinite] beam-conic group-hover:[animation-duration:2s]" />
         </span>
         <span className="relative">{children}</span>
-        {/* Subtle icon indicator revealed on hover */}
-        <ArrowUpRight className="relative h-4 w-4 -ml-1 opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" />
       </motion.button>
     )
   }

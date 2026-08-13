@@ -4,8 +4,9 @@ import emailjs from "@emailjs/browser";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Cancel01Icon } from "@hugeicons/core-free-icons";
 
-const ContactModal = ({ isOpen, onClose }) => {
+  const ContactModal = ({ isOpen, onClose }) => {
   const formRef = useRef();
+  const messageRef = useRef(null);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(null); // "success" | "error" | null
 
@@ -44,6 +45,7 @@ const ContactModal = ({ isOpen, onClose }) => {
       );
       setStatus("success");
       formRef.current.reset();
+      if (messageRef.current) messageRef.current.style.height = "auto";
     } catch (err) {
       console.error("EmailJS error:", err);
       setStatus("error");
@@ -155,8 +157,13 @@ const ContactModal = ({ isOpen, onClose }) => {
                   name="message"
                   required
                   rows={4}
+                  ref={messageRef}
+                  onChange={(e) => {
+                    e.target.style.height = "auto";
+                    e.target.style.height = e.target.scrollHeight + "px";
+                  }}
                   placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 rounded-xl bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors resize-none overflow-hidden"
                 />
               </div>
 

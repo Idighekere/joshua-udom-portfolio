@@ -28,6 +28,7 @@ const ProjectPage = () => {
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(null);
   const formRef = useRef();
+  const messageRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -57,6 +58,7 @@ const ProjectPage = () => {
       );
       setStatus("success");
       formRef.current.reset();
+      if (messageRef.current) messageRef.current.style.height = "auto";
     } catch (err) {
       console.error("EmailJS error:", err);
       setStatus("error");
@@ -310,8 +312,13 @@ const ProjectPage = () => {
                             name="message"
                             required
                             rows={3}
+                            ref={messageRef}
+                            onChange={(e) => {
+                              e.target.style.height = "auto";
+                              e.target.style.height = e.target.scrollHeight + "px";
+                            }}
                             placeholder="Tell me about your project..."
-                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-xs md:text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors resize-none"
+                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-xs md:text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors resize-none overflow-hidden"
                           />
 
                           {status === "success" && (
