@@ -15,21 +15,20 @@ const ArrowUpRight = (props) => (
 )
 
 const Button = ({ children, onClick, className = "", variant = "primary", ...props }) => {
-  const base = "group relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-300"
+  const base = "group relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
 
   if (variant === "primary") {
     return (
       <motion.button
         onClick={onClick}
         {...props}
-        style={{ backgroundImage: "linear-gradient(to bottom, #236553, #123C32)" }}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className={`${base} text-white shadow-[0_10px_24px_-8px_rgba(35,101,83,0.7)] ${className}`}
+        className={`${base} text-white bg-gradient-to-b from-primary-400 to-primary-500 shadow-lg shadow-primary/20 ${className}`}
       >
-        {/* Inset top highlight for glass-edge depth */}
+        {/* Top highlight edge for 3D glass depth */}
         <span aria-hidden="true"
-          className="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]" />
+          className="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.35)]" />
         <span className="relative">{children}</span>
         <ArrowRight className="relative h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
       </motion.button>
@@ -43,12 +42,12 @@ const Button = ({ children, onClick, className = "", variant = "primary", ...pro
         {...props}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className={`${base} text-white ring-1 ring-white/10 bg-white/5 backdrop-blur-sm ${className}`}
+        className={`${base} text-white ring-1 ring-primary-400/40 bg-white/5 backdrop-blur-sm ${className}`}
       >
-        {/* Moving border beam */}
+        {/* Moving border beam in the primary tone */}
         <span aria-hidden="true"
           className="beam-mask pointer-events-none absolute inset-0 rounded-full p-px opacity-70 transition-opacity duration-300 group-hover:opacity-100">
-          <span className="absolute inset-[-150%] animate-[beam-spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0deg,#00bce9_20deg,transparent_55deg)] group-hover:[animation-duration:2s]" />
+          <span className="absolute inset-[-150%] animate-[beam-spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0deg,theme(colors.primary.400)_20deg,transparent_55deg)] group-hover:[animation-duration:2s]" />
         </span>
         <span className="relative">{children}</span>
         {/* Subtle icon indicator revealed on hover */}
