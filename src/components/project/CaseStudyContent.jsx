@@ -15,7 +15,7 @@ const components = {
                 className="rounded-xl !mx-auto w-full !max-w-xl h-auto border border-neutral-800"
               />
               {value.caption && (
-                <figcaption className="mt-2 text-center text-sm text-neutral-500">
+                <figcaption className="mt-2 text-center text-xs md:text-sm text-neutral-500">
                   {value.caption}
                 </figcaption>
               )}
@@ -24,25 +24,25 @@ const components = {
         }
     },
     block: {
-        h1: ({ children }) => <h1 className="text-3xl font-bold mb-4 text-white">{children}</h1>,
-        h2: ({ children }) => <h2 className="text-2xl font-bold mb-3 mt-8 text-white">{children}</h2>,
-        h3: ({ children }) => <h3 className="text-xl font-bold mb-2 mt-6 text-white">{children}</h3>,
-        normal: ({ children }) => <p className="mb-4 text-neutral-300 leading-relaxed">{children}</p>,
+        h1: ({ children }) => <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">{children}</h1>,
+        h2: ({ children }) => <h2 className="text-2xl md:text-3xl font-bold mb-3 mt-8 text-white">{children}</h2>,
+        h3: ({ children }) => <h3 className="text-lg md:text-xl font-bold mb-2 mt-6 text-white">{children}</h3>,
+        normal: ({ children }) => <p className="mb-4 text-lg md:text-xl text-neutral-300 leading-relaxed">{children}</p>,
         blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-primary-500 pl-4 py-1 my-6 italic text-neutral-400 bg-white/5 rounded-r-lg">
+            <blockquote className="border-l-4 border-primary-500 pl-4 py-1 my-6 italic text-lg md:text-xl text-neutral-400 bg-white/5 rounded-r-lg">
                 {children}
             </blockquote>
         ),
     },
     list: {
-        bullet: ({ children }) => <ul className="list-disc ml-5 mb-4 text-neutral-300 space-y-1">{children}</ul>,
-        number: ({ children }) => <ol className="list-decimal ml-5 mb-4 text-neutral-300 space-y-1">{children}</ol>,
+        bullet: ({ children }) => <ul className="list-disc ml-5 mb-4 text-lg md:text-xl text-neutral-300 space-y-1">{children}</ul>,
+        number: ({ children }) => <ol className="list-decimal ml-5 mb-4 text-lg md:text-xl text-neutral-300 space-y-1">{children}</ol>,
     },
 }
 
 const CaseStudyContent = ({ value }) => {
     return (
-        <div className="prose prose-invert max-w-none">
+        <div className="prose prose-invert prose-lg max-w-none">
             <PortableText value={value} components={components} />
         </div>
     )

@@ -134,7 +134,7 @@ const ProjectPage = () => {
               {project.caseStudy ? (
                 <CaseStudyContent value={project.caseStudy} />
               ) : (
-                <p className="text-lg text-neutral-400">
+                <p className="text-lg md:text-xl text-neutral-400">
                   {project.description}
                 </p>
               )}
@@ -142,7 +142,7 @@ const ProjectPage = () => {
               {/* Gallery — horizontal scroll */}
               {project.gallery && project.gallery.length > 0 && (
                 <div className="space-y-6">
-                  <h3 className="text-2xl font-bold">Project Gallery</h3>
+                  <h3 className="text-xl md:text-2xl font-bold">Project Gallery</h3>
                   <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     {project.gallery.map((img, idx) => (
                       <motion.div
@@ -177,7 +177,7 @@ const ProjectPage = () => {
                               <line x1="11" y1="8" x2="11" y2="14" />
                               <line x1="8" y1="11" x2="14" y2="11" />
                             </svg>
-                            <span className="text-xs font-medium">Click to view</span>
+                            <span className="text-xs md:text-sm font-medium">Click to view</span>
                           </div>
                         </div>
                       </motion.div>
@@ -190,47 +190,47 @@ const ProjectPage = () => {
             {/* Sidebar */}
             <div className="space-y-8">
               <div className="sticky p-6 border bg-neutral-900/50 border-neutral-800 rounded-2xl backdrop-blur-sm top-24">
-                <h3 className="pb-4 text-xl font-bold border-b border-neutral-800">
+                <h3 className="pb-4 text-lg md:text-xl font-bold border-b border-neutral-800">
                   About This Project
                 </h3>
 
                 <div className="space-y-4 py-4">
                   {project.client && (
                     <div>
-                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                      <span className="block text-xs md:text-sm uppercase tracking-wider text-neutral-500 mb-1">
                         Client
                       </span>
-                      <span className="text-sm font-medium text-white">
+                      <span className="text-xs md:text-sm font-medium text-white">
                         {project.client}
                       </span>
                     </div>
                   )}
                   {project.year && (
                     <div>
-                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                      <span className="block text-xs md:text-sm uppercase tracking-wider text-neutral-500 mb-1">
                         Year
                       </span>
-                      <span className="text-sm font-medium text-white">
+                      <span className="text-xs md:text-sm font-medium text-white">
                         {project.year}
                       </span>
                     </div>
                   )}
                   {project.category && (
                     <div>
-                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                      <span className="block text-xs md:text-sm uppercase tracking-wider text-neutral-500 mb-1">
                         Category
                       </span>
-                      <span className="text-sm font-medium text-white capitalize">
+                      <span className="text-xs md:text-sm font-medium text-white capitalize">
                         {project.category}
                       </span>
                     </div>
                   )}
                   {project.collaborators?.length > 0 && (
                     <div>
-                      <span className="block text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                      <span className="block text-xs md:text-sm uppercase tracking-wider text-neutral-500 mb-1">
                         Collaborators
                       </span>
-                      <span className="text-sm font-medium text-white">
+                      <span className="text-xs md:text-sm font-medium text-white">
                         {project.collaborators.join(", ")}
                       </span>
                     </div>
@@ -247,7 +247,7 @@ const ProjectPage = () => {
                         exit={{ opacity: 0 }}
                         className="text-center mt-4"
                       >
-                        <p className="mb-4 text-sm text-neutral-500">
+                        <p className="mb-4 text-xs md:text-sm text-neutral-500">
                           Interested in a similar project?
                         </p>
                         <Button
@@ -266,7 +266,7 @@ const ProjectPage = () => {
                         transition={{ duration: 0.3 }}
                       >
                         <div className="flex items-center justify-between mb-4">
-                          <h4 className="text-sm font-bold text-white">
+                          <h4 className="text-xs md:text-sm font-bold text-white">
                             Start a Project
                           </h4>
                           <button
@@ -274,7 +274,7 @@ const ProjectPage = () => {
                               setShowForm(false);
                               setStatus(null);
                             }}
-                            className="text-xs text-neutral-500 hover:text-white transition-colors"
+                            className="text-xs md:text-sm text-neutral-500 hover:text-white transition-colors"
                           >
                             Cancel
                           </button>
@@ -290,37 +290,37 @@ const ProjectPage = () => {
                             name="from_name"
                             required
                             placeholder="Your name"
-                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors"
+                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-xs md:text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors"
                           />
                           <input
                             type="email"
                             name="from_email"
                             required
                             placeholder="your@email.com"
-                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors"
+                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-xs md:text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors"
                           />
                           <input
                             type="text"
                             name="subject"
                             required
                             placeholder="Project subject"
-                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors"
+                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-xs md:text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors"
                           />
                           <textarea
                             name="message"
                             required
                             rows={3}
                             placeholder="Tell me about your project..."
-                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors resize-none"
+                            className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-xs md:text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors resize-none"
                           />
 
                           {status === "success" && (
-                            <p className="text-xs text-green-400">
+                            <p className="text-xs md:text-sm text-green-400">
                               Message sent! I'll be in touch soon.
                             </p>
                           )}
                           {status === "error" && (
-                            <p className="text-xs text-red-400">
+                            <p className="text-xs md:text-sm text-red-400">
                               Something went wrong. Please try again.
                             </p>
                           )}
@@ -328,7 +328,7 @@ const ProjectPage = () => {
                           <button
                             type="submit"
                             disabled={sending}
-                            className="w-full px-4 py-2.5 rounded-full text-sm font-medium bg-gradient-to-r from-primary-500 to-primary-400 text-white shadow-lg shadow-primary-500/20 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                            className="w-full px-4 py-2.5 rounded-full text-xs md:text-sm font-medium bg-gradient-to-r from-primary-500 to-primary-400 text-white shadow-lg shadow-primary-500/20 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                           >
                             {sending ? "Sending..." : "Send Message"}
                           </button>
@@ -359,10 +359,10 @@ const ProjectPage = () => {
                     className="text-neutral-500 group-hover:text-primary-400 transition-colors"
                   />
                   <div>
-                    <span className="block text-xs uppercase tracking-wider text-neutral-500">
+                    <span className="block text-xs md:text-sm uppercase tracking-wider text-neutral-500">
                       Previous Project
                     </span>
-                    <span className="text-sm font-medium text-white">
+                    <span className="text-xs md:text-sm font-medium text-white">
                       {prev.title}
                     </span>
                   </div>
@@ -376,10 +376,10 @@ const ProjectPage = () => {
                   className="group w-full sm:w-auto flex items-center justify-end gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-5 text-right transition-colors hover:border-primary-500/40"
                 >
                   <div>
-                    <span className="block text-xs uppercase tracking-wider text-neutral-500">
+                    <span className="block text-xs md:text-sm uppercase tracking-wider text-neutral-500">
                       Next Project
                     </span>
-                    <span className="text-sm font-medium text-white">
+                    <span className="text-xs md:text-sm font-medium text-white">
                       {next.title}
                     </span>
                   </div>

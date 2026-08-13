@@ -23,8 +23,8 @@ const ProjectCard = ({ project }) => {
       {/* Overlay */}
       <div className="absolute inset-0 flex flex-col justify-end p-6 transition-opacity duration-300 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
         <Badge className="mb-2 w-fit capitalize">{project.category}</Badge>
-        <h3 className="mb-2 text-xl font-bold text-white">{project.title}</h3>
-        <span className="text-sm font-medium text-primary-400">
+        <h3 className="mb-2 text-lg md:text-xl font-bold text-white">{project.title}</h3>
+        <span className="text-xs md:text-sm font-medium text-primary-400">
           View Project &rarr;
         </span>
       </div>

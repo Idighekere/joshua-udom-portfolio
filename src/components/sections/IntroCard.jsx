@@ -28,7 +28,7 @@ const IntroCard = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium w-fit"
+              className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs md:text-sm font-medium w-fit"
             >
               Hello there 👋
             </motion.div>
@@ -44,7 +44,7 @@ const IntroCard = () => {
               Graphic Designer
             </h2>
 
-            <p className="text-base md:text-lg text-neutral-400 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-neutral-400 mb-8 leading-relaxed">
               Having a keen eye for aesthetics, I make sure that every design I
               create is not only visually pleasing but also serves a clear
               strategic purpose.

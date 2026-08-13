@@ -44,8 +44,8 @@ const Projects = () => {
                   className="text-primary-400"
                 />
               </div>
-              <h2 className="text-3xl font-bold mb-4">All Projects</h2>
-              <p className="text-neutral-400 max-w-xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">All Projects</h2>
+              <p className="text-lg md:text-xl text-neutral-400 max-w-xl mx-auto">
                 Browse through my full collection of design projects
               </p>
               <div className="h-1 w-24 bg-primary-500 mx-auto rounded-full mt-6"></div>

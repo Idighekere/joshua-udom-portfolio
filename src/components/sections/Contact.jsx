@@ -35,9 +35,9 @@ const Contact = () => {
     <section id="contact-me" className="py-24">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl  font-bold mb-6">Get in Touch</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Get in Touch</h2>
           <div className="h-1 w-24 bg-primary-500 mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
             Have a project in mind? Let's create something amazing together.
             Reach out for design projects, brand consultation, or just to say
             hello.
@@ -61,7 +61,7 @@ const Contact = () => {
               <div className="p-4 rounded-full bg-white/5 group-hover:bg-white/20 transition-colors mb-4">
                 <HugeiconsIcon icon={link.icon} size={32} color="white" />
               </div>
-              <span className="font-medium text-lg">{link.name}</span>
+              <span className="font-medium text-lg md:text-xl">{link.name}</span>
             </motion.a>
           ))}
         </div>

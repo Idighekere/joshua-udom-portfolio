@@ -76,7 +76,7 @@ const Header = () => {
       >
         <Link
           to="/"
-          className="text-xl font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent"
+          className="text-lg md:text-xl font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent"
         >
           Joshua Udom✨
         </Link>
@@ -140,7 +140,7 @@ const Header = () => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link)}
-                    className="p-4 text-center text-lg font-medium text-white hover:bg-white/5 rounded-xl transition-colors"
+                    className="p-4 text-center text-base md:text-lg font-medium text-white hover:bg-white/5 rounded-xl transition-colors"
                   >
                     {link.name}
                   </a>

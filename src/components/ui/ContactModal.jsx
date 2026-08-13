@@ -84,8 +84,8 @@ const ContactModal = ({ isOpen, onClose }) => {
 
             {/* Header */}
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-white">Start a Project</h3>
-              <p className="text-neutral-400 text-sm mt-1">
+              <h3 className="text-xl md:text-2xl font-bold text-white">Start a Project</h3>
+              <p className="text-neutral-400 text-xs md:text-sm mt-1">
                 Fill in the details and I'll get back to you shortly.
               </p>
             </div>
@@ -95,7 +95,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               <div>
                 <label
                   htmlFor="from_name"
-                  className="block text-sm font-medium text-neutral-300 mb-1.5"
+                  className="block text-xs md:text-sm font-medium text-neutral-300 mb-1.5"
                 >
                   Name
                 </label>
@@ -112,7 +112,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               <div>
                 <label
                   htmlFor="from_email"
-                  className="block text-sm font-medium text-neutral-300 mb-1.5"
+                  className="block text-xs md:text-sm font-medium text-neutral-300 mb-1.5"
                 >
                   Email
                 </label>
@@ -129,7 +129,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-neutral-300 mb-1.5"
+                  className="block text-xs md:text-sm font-medium text-neutral-300 mb-1.5"
                 >
                   Subject
                 </label>
@@ -146,7 +146,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-neutral-300 mb-1.5"
+                  className="block text-xs md:text-sm font-medium text-neutral-300 mb-1.5"
                 >
                   Message
                 </label>
@@ -162,12 +162,12 @@ const ContactModal = ({ isOpen, onClose }) => {
 
               {/* Status messages */}
               {status === "success" && (
-                <p className="text-sm text-green-400">
+                <p className="text-xs md:text-sm text-green-400">
                   Message sent successfully! I'll be in touch soon.
                 </p>
               )}
               {status === "error" && (
-                <p className="text-sm text-red-400">
+                <p className="text-xs md:text-sm text-red-400">
                   Something went wrong. Please try again or reach out directly.
                 </p>
               )}

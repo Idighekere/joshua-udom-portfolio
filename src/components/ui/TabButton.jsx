@@ -6,7 +6,7 @@ const TabButton = ({ selectedCategory, handleCategory, name, category }) => {
 
     return (
         <button
-            className={`relative px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${isSelected ? "text-white" : "text-neutral-400 hover:text-white"}`}
+            className={`relative px-6 py-2 rounded-full text-xs md:text-sm font-medium transition-colors duration-300 ${isSelected ? "text-white" : "text-neutral-400 hover:text-white"}`}
             onClick={() => handleCategory(category)}
         >
             {isSelected && (

@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="py-8 border-t border-neutral-800 bg-black relative">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-neutral-500 text-sm">
+        <p className="text-neutral-500 text-xs md:text-sm">
           Joshua © {year} | Developed with ❤️ by{" "}
           <a
             href="https://idighekere.dev/"

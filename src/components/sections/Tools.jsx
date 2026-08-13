@@ -34,8 +34,8 @@ const Tools = () => {
               className="text-primary-400"
             />
           </div>
-          <h2 className="text-3xl font-bold mb-4">Tools & Skills</h2>
-          <p className="text-neutral-400 max-w-xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Tools & Skills</h2>
+          <p className="text-lg md:text-xl text-neutral-400 max-w-xl mx-auto">
             The design tools I use daily to bring ideas to life.
           </p>
           <div className="h-1 w-24 bg-primary-500 mx-auto rounded-full mt-6"></div>
@@ -61,7 +61,7 @@ const Tools = () => {
                   className="text-primary-400"
                 />
               </div>
-              <span className="font-medium text-neutral-300 text-sm">
+              <span className="font-medium text-neutral-300 text-xs md:text-sm">
                 {tool.name}
               </span>
             </motion.div>
@@ -79,10 +79,10 @@ const Tools = () => {
               transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
               className="text-center p-6 rounded-xl bg-neutral-900 border border-neutral-800"
             >
-              <span className="block text-4xl font-bold text-primary-500 mb-2">
+              <span className="block text-3xl md:text-4xl font-bold text-primary-500 mb-2">
                 {stat.value}
               </span>
-              <span className="text-neutral-500 text-sm uppercase tracking-wider">
+              <span className="text-neutral-500 text-xs md:text-sm uppercase tracking-wider">
                 {stat.label}
               </span>
             </motion.div>
