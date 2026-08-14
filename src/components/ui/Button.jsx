@@ -35,7 +35,7 @@ const Button = ({ children, onClick, className = "", variant = "primary", ...pro
         {...props}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className={`${base} text-white ring-1 ring-primary-400/40 bg-white/5 backdrop-blur-sm ${className}`}
+        className={`${base} overflow-hidden text-white ring-1 ring-primary-400/40 bg-white/5 backdrop-blur-sm ${className}`}
       >
         {/* Moving border beam in the primary tone */}
         <span aria-hidden="true"

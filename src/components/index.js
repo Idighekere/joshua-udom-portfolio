@@ -3,6 +3,7 @@ export { default as Contact } from "./sections/Contact";
 export { default as TopProjects } from "./sections/TopProjects";
 export { default as Hero } from "./sections/Hero";
 export { default as IntroCard } from "./sections/IntroCard";
+export { default as MarqueeGallery } from "./sections/MarqueeGallery";
 export { default as Footer } from "./layout/Footer";
 export { default as Header } from "./layout/Header";
 export { default as PageTransition } from "./layout/PageTransition";

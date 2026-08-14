@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="relative md:min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative flex items-center justify-center overflow-hidden py-16 md:py-24">
       {/* Background Orbs */}
       <div className="bg-orb w-96 h-96 bg-primary-500/20 top-20 left-10 blur-[100px]"></div>
       <div className="bg-orb w-64 h-64 bg-secondary-500/30 bottom-20 right-10 blur-[80px] animation-delay-2000"></div>
@@ -13,7 +13,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs md:text-sm font-medium"
+          className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-transparent border border-white/15 text-white text-xs md:text-sm font-medium"
         >
           <span className="relative flex shrink-0 h-2.5 w-2.5">
             <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -25,10 +25,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl sm:text-5xl md:text-7xl  font-bold leading-tight text-white max-w-4xl mx-auto"
+          className="text-4xl sm:text-5xl md:text-7xl font-medium tracking-tight leading-[1.1] text-white max-w-4xl mx-auto"
         >
           Partnering with brands to create{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-white">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-white italic">
             strategic designs
           </span>{" "}
           that work.
@@ -38,7 +38,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-          className="mt-20"
+          className="mt-12 md:mt-16"
         >
           <Link to="/projects">
             <motion.button

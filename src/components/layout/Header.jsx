@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Menu11Icon, Cancel01Icon } from "@hugeicons/core-free-icons";
@@ -13,19 +13,40 @@ const Links = [
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      if (location.pathname !== "/") return;
+
+      // Track which home section is currently in view
+      const ids = ["about-me", "contact-me"];
+      const marker = window.innerHeight * 0.35;
+      let current = null;
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= marker && rect.bottom > marker) current = id;
+        }
+      }
+      setActiveSection(current);
+    };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   // After navigation, scroll to the hash target if present
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace("#", "");
+      setActiveSection(id);
       // Small delay to let the page render before scrolling
       const timer = setTimeout(() => {
         const el = document.getElementById(id);
@@ -34,8 +55,18 @@ const Header = () => {
         }
       }, 300);
       return () => clearTimeout(timer);
+    } else {
+      setActiveSection(null);
     }
   }, [location]);
+
+  const isActive = (link) => {
+    if (!link.href.includes("#")) {
+      return location.pathname === link.href;
+    }
+    const hash = link.href.split("#")[1];
+    return activeSection === hash;
+  };
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -51,6 +82,7 @@ const Header = () => {
 
       if (location.pathname === "/") {
         // Already on home — just scroll
+        setActiveSection(hash);
         const el = document.getElementById(hash);
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
@@ -68,18 +100,15 @@ const Header = () => {
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`w-full max-w-5xl flex items-center justify-between px-6 py-4 rounded-full transition-all duration-300 backdrop-blur-md ${
+        className={`w-full flex items-center justify-between px-6 rounded-full transition-all duration-300 backdrop-blur-md ${
           scrolled
-            ? "bg-black/50 border border-primary-500/30 shadow-[0_0_20px_rgba(0,149,199,0.15)]"
-            : "bg-transparent border border-transparent"
+            ? "max-w-5xl bg-black/50 border border-primary-500/20 py-4"
+            : "max-w-4xl bg-transparent border border-transparent py-2.5"
         }`}
       >
-        <Link
-          to="/"
-          className="text-lg md:text-xl font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent"
-        >
-          Joshua Udom✨
-        </Link>
+        <a href="/" className="text-base md:text-lg font-medium text-white">
+          Joshua Udom
+        </a>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-1">
@@ -88,7 +117,11 @@ const Header = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link)}
-              className="px-5 py-2 rounded-full  font-medium text-neutral-300 hover:text-white hover:bg-white/5 transition-colors"
+              className={`px-5 py-2 rounded-full font-medium transition-colors ${
+                isActive(link)
+                  ? "bg-primary-500/20 text-primary-400"
+                  : "text-neutral-300 hover:text-primary-400 hover:bg-primary-500/10"
+              }`}
             >
               {link.name}
             </a>
@@ -140,7 +173,11 @@ const Header = () => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link)}
-                    className="p-4 text-center text-base md:text-lg font-medium text-white hover:bg-white/5 rounded-xl transition-colors"
+                    className={`p-4 text-center text-base md:text-lg font-medium rounded-xl transition-colors ${
+                      isActive(link)
+                        ? "bg-primary-500/20 text-primary-400"
+                        : "text-white hover:text-primary-400 hover:bg-primary-500/10"
+                    }`}
                   >
                     {link.name}
                   </a>

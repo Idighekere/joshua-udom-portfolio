@@ -2,7 +2,7 @@
 /* Satoshi Font Family */
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-Light.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-LightItalic.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-LightItalic.woff2") format("woff2");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-Regular.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -26,7 +26,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-Italic.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-Italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -34,7 +34,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-Medium.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -42,7 +42,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-MediumItalic.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-MediumItalic.woff2") format("woff2");
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -50,7 +50,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-Bold.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -58,7 +58,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-BoldItalic.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-BoldItalic.woff2") format("woff2");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -66,7 +66,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-Black.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -74,7 +74,7 @@
 
 @font-face {
   font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-BlackItalic.otf") format("opentype");
+  src: url("/fonts/satoshi/Satoshi-BlackItalic.woff2") format("woff2");
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -92,7 +92,7 @@ body {
   background-color: #050505;
   color: white;
   font-family: "Satoshi", sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
@@ -165,4 +165,46 @@ body {
 /* Beam color = primary-400 (#00bce9) so it stays on palette */
 .beam-conic {
   background-image: conic-gradient(from 0deg, transparent 0deg, #00bce9 20deg, transparent 55deg);
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30%,
+  50% {
+    transform: rotate(16deg);
+  }
+  20%,
+  40% {
+    transform: rotate(-8deg);
+  }
+}
+
+.wave-hand {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 1.6s ease-in-out infinite;
+}
+
+/* ===== Infinite Marquee (dual-row scrolling gallery) ===== */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

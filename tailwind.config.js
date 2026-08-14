@@ -13,12 +13,14 @@ export default {
         'neutral-300': '#f5f4f3'
       },
       fontFamily: {
-        sans: `"Bricolage Grotesque", sans-serif`,
+        sans: `"Satoshi", sans-serif`,
         satoshi: `"Satoshi", sans-serif`
       },
       animation: {
         bounce200: 'bounce 1s infinite 200ms',
-        bounce400: 'bounce 1s infinite 400ms'
+        bounce400: 'bounce 1s infinite 400ms',
+        marquee: 'marquee-left 45s linear infinite',
+        'marquee-reverse': 'marquee-right 45s linear infinite'
       }
     }
   },

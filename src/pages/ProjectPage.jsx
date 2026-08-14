@@ -9,6 +9,9 @@ import {
   LoadingSpinner,
 } from "../components";
 import CaseStudyContent from "../components/project/CaseStudyContent";
+import MarqueeGallery from "../components/sections/MarqueeGallery";
+import { glowCardClass, TopGlow } from "../components/ui/GlowCard";
+import { getCategoryLabel } from "../utils/categoryLabel";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { useState, useRef, useEffect } from "react";
@@ -114,7 +117,7 @@ const ProjectPage = () => {
               {project.title}
             </motion.h1>
             <div className="flex flex-wrap gap-3">
-              {project.category && <Badge className="capitalize">{project.category}</Badge>}
+              {project.category && <Badge>{getCategoryLabel(project.category)}</Badge>}
             </div>
           </div>
 
@@ -141,57 +144,32 @@ const ProjectPage = () => {
                 </p>
               )}
 
-              {/* Gallery — horizontal scroll */}
+              {/* Gallery — infinite marquee */}
               {project.gallery && project.gallery.length > 0 && (
                 <div className="space-y-6">
                   <h3 className="text-xl md:text-2xl font-bold">Project Gallery</h3>
-                  <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                    {project.gallery.map((img, idx) => (
-                      <motion.div
-                        key={idx}
-                        whileHover={{ scale: 1.02 }}
-                        className="group relative shrink-0 w-[82%] sm:w-[60%] md:w-[42%] lg:w-[28%] aspect-[4/5] rounded-xl overflow-hidden cursor-pointer snap-start"
-                        onClick={() => {
-                          setPhotoIndex(idx);
-                          setLightboxOpen(true);
-                        }}
-                      >
-                        <img
-                          src={urlFor(img).width(800).quality(80).auto("format").url()}
-                          alt={`Gallery ${idx + 1}`}
-                          className="w-full h-full object-cover object-center block transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 bg-black/40 group-hover:opacity-100">
-                          <div className="flex flex-col items-center gap-1 text-white">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="28"
-                              height="28"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <circle cx="11" cy="11" r="8" />
-                              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                              <line x1="11" y1="8" x2="11" y2="14" />
-                              <line x1="8" y1="11" x2="14" y2="11" />
-                            </svg>
-                            <span className="text-xs md:text-sm font-medium">Click to view</span>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
+                  <MarqueeGallery
+                    items={project.gallery.map((img, idx) => ({
+                      key: `g-${idx}`,
+                      src: urlFor(img)
+                        .width(640)
+                        .quality(80)
+                        .auto("format")
+                        .url(),
+                      onClick: () => {
+                        setPhotoIndex(idx);
+                        setLightboxOpen(true);
+                      },
+                    }))}
+                  />
                 </div>
               )}
             </div>
 
             {/* Sidebar */}
             <div className="space-y-8">
-              <div className="sticky p-6 border bg-neutral-900/50 border-neutral-800 rounded-2xl backdrop-blur-sm top-24">
+              <div className={`sticky top-24 p-6 ${glowCardClass} backdrop-blur-sm`}>
+                <TopGlow />
                 <h3 className="pb-4 text-lg md:text-xl font-bold border-b border-neutral-800">
                   About This Project
                 </h3>
@@ -222,8 +200,8 @@ const ProjectPage = () => {
                       <span className="block text-xs md:text-sm uppercase tracking-wider text-neutral-500 mb-1">
                         Category
                       </span>
-                      <span className="text-xs md:text-sm font-medium text-white capitalize">
-                        {project.category}
+                      <span className="text-xs md:text-sm font-medium text-white">
+                        {getCategoryLabel(project.category)}
                       </span>
                     </div>
                   )}

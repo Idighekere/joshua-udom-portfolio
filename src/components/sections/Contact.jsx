@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Facebook01Icon, CallIcon, Mail01Icon, WhatsappIcon } from "@hugeicons/core-free-icons";
+import { Facebook01Icon, CallIcon, Mail01Icon, WhatsappIcon, Chat01Icon } from "@hugeicons/core-free-icons";
+import { glowCardClass, GlowSection } from "../ui/GlowCard";
 
 const socialLinks = [
   {
@@ -32,11 +33,19 @@ const socialLinks = [
 
 const Contact = () => {
   return (
-    <section id="contact-me" className="py-24">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Get in Touch</h2>
-          <div className="h-1 w-24 bg-primary-500 mx-auto rounded-full mb-8"></div>
+    <section id="contact-me" className="py-16 md:py-24">
+      <GlowSection className="container mx-auto px-6 pt-10 md:pt-14">
+        <div className="text-center mb-10 md:mb-12 space-y-4">
+          <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary-500/10 border border-primary-500/20">
+            <HugeiconsIcon
+              icon={Chat01Icon}
+              size={28}
+              color="currentColor"
+              className="text-primary-400"
+            />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold">Get in Touch</h2>
+          <div className="h-1 w-24 bg-primary-500 mx-auto rounded-full"></div>
           <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
             Have a project in mind? Let's create something amazing together.
             Reach out for design projects, brand consultation, or just to say
@@ -56,7 +65,7 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className={`flex flex-col items-center justify-center p-8 rounded-2xl bg-neutral-900 border border-neutral-800 transition-all duration-300 group ${link.color} hover:border-transparent cursor-pointer`}
+              className={`flex flex-col items-center justify-center p-8 ${glowCardClass} border border-white/10 transition-all duration-300 group ${link.color} hover:border-transparent cursor-pointer`}
             >
               <div className="p-4 rounded-full bg-white/5 group-hover:bg-white/20 transition-colors mb-4">
                 <HugeiconsIcon icon={link.icon} size={32} color="white" />
@@ -65,7 +74,7 @@ const Contact = () => {
             </motion.a>
           ))}
         </div>
-      </div>
+      </GlowSection>
     </section>
   );
 };

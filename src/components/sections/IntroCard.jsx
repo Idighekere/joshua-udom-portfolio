@@ -2,12 +2,13 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "../ui/Button";
+import { glowCardClass, TopGlow } from "../ui/GlowCard";
 
 const IntroCard = () => {
   return (
     <section
       id="about-me"
-      className="relative flex items-center justify-center py-24 overflow-hidden"
+      className="relative flex items-center justify-center py-16 md:py-24 overflow-hidden"
     >
       {/* Background Orbs */}
       <div className="bg-orb w-96 h-96 bg-primary-500/20 top-20 left-10 blur-[100px]"></div>
@@ -18,8 +19,9 @@ const IntroCard = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative z-10 mx-auto w-[90%] max-w-5xl rounded-2xl border border-white/10 bg-[#111111] overflow-hidden"
+        className={`relative z-10 mx-auto w-[90%] max-w-5xl ${glowCardClass}`}
       >
+        <TopGlow />
         <div className="flex flex-col-reverse lg:flex-row lg:items-stretch">
           {/* Text Content */}
           <div className="flex-1 p-4 md:p-10 /lg:p-12 flex flex-col justify-center">
@@ -30,7 +32,7 @@ const IntroCard = () => {
               transition={{ delay: 0.2 }}
               className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs md:text-sm font-medium w-fit"
             >
-              Hello there 👋
+              Hello there <span className="wave-hand" aria-hidden="true">👋</span>
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-none font-bold mb-4 leading-tight text-white /whitespace-nowrap">
@@ -50,7 +52,7 @@ const IntroCard = () => {
               strategic purpose.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 relative z-10">
               <a href="mailto:workwithjoshuaudom@gmail.com">
                 <Button variant="outline" className="w-full sm:w-auto">
                   Contact Me
@@ -74,6 +76,11 @@ const IntroCard = () => {
               className="w-full h-full object-cover absolute inset-0"
               wrapperClassName="!block w-full h-full"
             />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 rounded-t-3xl lg:rounded-tl-none border-t border-white/30 [-webkit-mask-image:linear-gradient(to_bottom,black,black_4px,transparent)] [mask-image:linear-gradient(to_bottom,black,black_4px,transparent)]"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-44 md:h-64 bg-[linear-gradient(to_top,rgba(12,12,13,1)_0%,rgba(12,12,13,0.85)_30%,rgba(12,12,13,0.4)_70%,rgba(12,12,13,0)_100%)] pointer-events-none" />
           </motion.div>
         </div>
       </motion.div>

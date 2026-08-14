@@ -4,6 +4,7 @@ import ProjectsGrid from "../project/ProjectsGrid";
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import { useProjects } from "../../hooks/useProjects";
+import { GlowSection } from "../ui/GlowCard";
 
 const TopProjects = ({ limit = 6 }) => {
   const { projects, loading } = useProjects();
@@ -14,11 +15,11 @@ const TopProjects = ({ limit = 6 }) => {
       : [];
 
   return (
-    <section id="works" className="py-24 relative">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="works" className="py-16 md:py-24 relative">
+      <GlowSection className="container mx-auto px-4 sm:px-6 pt-10 md:pt-14">
         {/* Section Header */}
-        <div className="text-center mb-16 px-6 sm:px-0">
-          <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary-500/10 border border-primary-500/20 mb-6">
+        <div className="text-center mb-10 md:mb-12 px-6 sm:px-0 space-y-4">
+          <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary-500/10 border border-primary-500/20">
             <HugeiconsIcon
               icon={StarCircleIcon}
               size={28}
@@ -26,11 +27,11 @@ const TopProjects = ({ limit = 6 }) => {
               className="text-primary-400"
             />
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Top Projects</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Top Projects</h2>
           <p className="text-lg md:text-xl text-neutral-400 max-w-xl mx-auto">
             A glimpse into some of my top projects 
           </p>
-          <div className="h-1 w-24 bg-primary-500 mx-auto rounded-full mt-6"></div>
+          <div className="h-1 w-24 bg-primary-500 mx-auto rounded-full"></div>
         </div>
 
         <ProjectsGrid projects={topProjects} loading={loading} />
@@ -43,7 +44,7 @@ const TopProjects = ({ limit = 6 }) => {
             </Button>
           </Link>
         </div>
-      </div>
+      </GlowSection>
     </section>
   );
 };
