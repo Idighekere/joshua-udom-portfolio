@@ -39,3 +39,6 @@ studio/package-lock.json
 .env*.local
 .env
 studio/.env
+
+# Local Sanity backups (large design assets — never commit)
+backups

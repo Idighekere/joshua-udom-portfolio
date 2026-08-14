@@ -1,0 +1,74 @@
+name: Sanity Backup to Backblaze B2
+
+# When this runs:
+#   - On the 1st of every month at 02:00 UTC (cron)
+#   - Manually, via the "Run workflow" button in the Actions tab
+on:
+  schedule:
+    - cron: "0 2 1 * *"
+  workflow_dispatch:
+
+# Grants the runner permission to write to the repo (needed for checkout only).
+permissions:
+  contents: read
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Download the repository code onto the runner.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Install the JS runtime + project dependencies (pulls @sanity/export).
+      #    The repo uses bun.lock (no package-lock.json committed), so we use
+      #    the bun installer + `bun install`.
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # 3. Export the full dataset (documents + assets) to backups/*.tar.gz.
+      #    SANITY_AUTH_TOKEN is injected from GitHub Secrets (never printed).
+      - name: Export Sanity dataset
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+        run: bun run scripts/backup-local.js
+
+      # 4. Install Backblaze's native CLI (pip works on the GitHub runner).
+      - name: Install Backblaze CLI
+        run: pip install b2
+
+      # 5. Authenticate to B2 using the key stored in GitHub Secrets.
+      - name: Authenticate to Backblaze B2
+        env:
+          B2_KEY_ID: ${{ secrets.B2_KEY_ID }}
+          B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+        run: b2 account authorize "$B2_KEY_ID" "$B2_APPLICATION_KEY"
+
+      # 6. Upload the archive to the bucket.
+      - name: Upload backup to B2
+        env:
+          B2_BUCKET: ${{ secrets.B2_BUCKET }}
+        run: |
+          ARCHIVE=$(ls -t backups/production-*.tar.gz | head -1)
+          echo "Uploading $ARCHIVE"
+          b2 upload-file "b2://$B2_BUCKET" "$ARCHIVE" "sanity/$(basename "$ARCHIVE")"
+
+      # 7. Retention: keep the 12 newest backups, delete the rest.
+      #    `b2 ls --json` emits objects with fileName + fileId; the oldest
+      #    filenames (timestamps) sort first, so keep the last 12.
+      - name: Prune old backups (keep 12)
+        env:
+          B2_BUCKET: ${{ secrets.B2_BUCKET }}
+        run: |
+          b2 ls --json --recursive "b2://$B2_BUCKET/sanity" \
+            | jq -r 'select(.action == "upload") | "\(.fileName)\t\(.fileId)"' \
+            | sort \
+            | head -n -12 \
+            | while IFS=$'\t' read -r FILE FILE_ID; do
+                echo "Deleting $FILE"
+                b2 delete-file-version "$FILE" "$FILE_ID"
+              done
