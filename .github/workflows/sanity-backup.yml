@@ -21,9 +21,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Install the JS runtime + project dependencies (pulls @sanity/export).
-      #    The repo uses bun.lock (no package-lock.json committed), so we use
-      #    the bun installer + `bun install`.
+      # 2. Install Node (needed at runtime) + bun (used to install deps since
+      #    the repo has no package-lock.json, only bun.lock).
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
 
@@ -31,11 +35,13 @@ jobs:
         run: bun install --frozen-lockfile
 
       # 3. Export the full dataset (documents + assets) to backups/*.tar.gz.
+      #    Run with `node`, NOT bun: @sanity/export depends on Node stream APIs
+      #    that bun does not fully implement (stream.on is undefined under bun).
       #    SANITY_AUTH_TOKEN is injected from GitHub Secrets (never printed).
       - name: Export Sanity dataset
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-        run: bun run scripts/backup-local.js
+        run: node scripts/backup-local.js
 
       # 4. Install Backblaze's native CLI (pip works on the GitHub runner).
       - name: Install Backblaze CLI
