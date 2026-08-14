@@ -1,11 +1,9 @@
 name: Sanity Backup to Backblaze B2
 
 # When this runs:
-#   - On the 1st of every month at 02:00 UTC (cron)
-#   - Manually, via the "Run workflow" button in the Actions tab
+#   - Manually, via the "Run workflow" button in the Actions tab (export only
+#     when you've made content changes).
 on:
-  schedule:
-    - cron: "0 2 1 * *"
   workflow_dispatch:
 
 # Grants the runner permission to write to the repo (needed for checkout only).
