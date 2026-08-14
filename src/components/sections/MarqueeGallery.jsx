@@ -34,10 +34,26 @@ const MarqueeCard = ({ src, title, slug, onClick }) => {
         <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary-500/25 via-secondary-500/30 to-transparent" />
       )}
       {onClick && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover/card:opacity-100">
-          <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
-            View
-          </span>
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-200 group-hover/card:opacity-100">
+          <div className="flex flex-col items-center gap-1 text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg>
+            <span className="text-xs md:text-sm font-medium">Click to view</span>
+          </div>
         </div>
       )}
       {title && (
