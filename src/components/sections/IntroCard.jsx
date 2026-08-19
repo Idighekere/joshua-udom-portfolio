@@ -10,15 +10,15 @@ const IntroCard = () => {
       className="relative flex items-center justify-center py-16 md:py-24 overflow-hidden"
     >
       {/* Background Orbs */}
-      <div className="bg-orb w-96 h-96 bg-primary-500/20 top-20 left-10 blur-[100px]"></div>
-      <div className="bg-orb w-64 h-64 bg-secondary-500/30 bottom-20 right-10 blur-[80px] animation-delay-2000"></div>
+      <div className="bg-orb w-96 h-96 /bg-primary-500/20 top-20 left-10 blur-[100px]"></div>
+      <div className="bg-orb w-64 h-64 /bg-secondary-500/30 bottom-20 right-10 blur-[80px] animation-delay-2000"></div>
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`relative z-10 mx-auto w-[90%] max-w-5xl ${glowCardClass}`}
+        className={`relative z-10 mx-auto w-[90%] bg-black max-w-5xl ${glowCardClass}`}
       >
         <TopGlow />
         <div className="flex flex-col-reverse lg:flex-row lg:items-stretch">
@@ -85,7 +85,7 @@ const IntroCard = () => {
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 rounded-t-3xl lg:rounded-tl-none border-t border-white/30 [-webkit-mask-image:linear-gradient(to_bottom,black,black_4px,transparent)] [mask-image:linear-gradient(to_bottom,black,black_4px,transparent)]"
             />
-            <div className="absolute inset-x-0 bottom-0 h-44 md:h-64 bg-[linear-gradient(to_top,rgba(12,12,13,1)_0%,rgba(12,12,13,0.85)_30%,rgba(12,12,13,0.4)_70%,rgba(12,12,13,0)_100%)] pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-44 md:h-64 bg-[linear-gradient(to_top,rgba(0,0,0,1)_0%,rgba(0,0,0,0.95)_15%,rgba(0,0,0,0.90)_30%,rgba(0,0,0,0.4)_70%,rgba(0,0,0,0)_100%)] pointer-events-none" />
           </motion.div>
         </div>
       </motion.div>
