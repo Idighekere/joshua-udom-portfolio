@@ -22,8 +22,8 @@ const Hero = () => {
           Open to work
         </motion.div>
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 30 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-4xl sm:text-5xl md:text-7xl font-medium tracking-tight leading-[1.1] text-white max-w-4xl mx-auto"
         >

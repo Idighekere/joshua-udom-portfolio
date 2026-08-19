@@ -85,7 +85,7 @@ const ProjectPage = () => {
     return (
       <div className="flex flex-col items-center justify-center h-screen text-white bg-black">
         Project not found{" "}
-        <Link to="/" className="mt-4 text-primary-400">
+        <Link to="/" className="mt-4 text-primary-400 underline decoration-primary-400/50 underline-offset-4">
           Go Home
         </Link>
       </div>
@@ -106,7 +106,7 @@ const slides = galleryImages.map((src) => ({ src }));
           <div className="mx-auto max-w-7xl">
             <Link
               to="/projects"
-              className="inline-flex items-center mb-6 transition-colors text-neutral-400 hover:text-white"
+              className="inline-flex items-center mb-6 transition-colors text-neutral-400 hover:text-white underline decoration-neutral-500 underline-offset-4"
             >
               <HugeiconsIcon
                 icon={ArrowLeft02Icon}

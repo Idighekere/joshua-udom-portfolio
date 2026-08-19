@@ -15,7 +15,7 @@ const Footer = () => {
           Joshua © {year} | Developed with ❤️ by{" "}
           <a
             href="https://idighekere.dev/"
-            className="text-neutral-300 hover:text-primary-400 transition-colors"
+            className="text-neutral-300 hover:text-primary-400 transition-colors underline decoration-neutral-500 underline-offset-4"
           >
             Idighekere
           </a>
