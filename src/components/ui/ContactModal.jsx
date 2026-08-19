@@ -79,6 +79,7 @@ import { Cancel01Icon } from "@hugeicons/core-free-icons";
             {/* Close button */}
             <button
               onClick={onClose}
+              aria-label="Close contact form"
               className="absolute top-4 right-4 p-2 text-neutral-400 hover:text-white transition-colors rounded-full hover:bg-white/5"
             >
               <HugeiconsIcon icon={Cancel01Icon} size={20} color="currentColor" />
@@ -88,7 +89,7 @@ import { Cancel01Icon } from "@hugeicons/core-free-icons";
             <div className="mb-6">
               <h3 className="text-xl md:text-2xl font-bold text-white">Start a Project</h3>
               <p className="text-neutral-400 text-xs md:text-sm mt-1">
-                Fill in the details and I'll get back to you shortly.
+                Fill in the details and I&apos;ll get back to you shortly.
               </p>
             </div>
 
@@ -170,7 +171,7 @@ import { Cancel01Icon } from "@hugeicons/core-free-icons";
               {/* Status messages */}
               {status === "success" && (
                 <p className="text-xs md:text-sm text-green-400">
-                  Message sent successfully! I'll be in touch soon.
+                  Message sent successfully! I&apos;ll be in touch soon.
                 </p>
               )}
               {status === "error" && (
@@ -182,7 +183,7 @@ import { Cancel01Icon } from "@hugeicons/core-free-icons";
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-primary-500 to-primary-400 text-white shadow-lg shadow-primary-500/20 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-3 rounded-full font-medium transition-opacity duration-300 bg-gradient-to-r from-primary-500 to-primary-400 text-white shadow-lg shadow-primary-500/20 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {sending ? "Sending..." : "Send Message"}
               </button>

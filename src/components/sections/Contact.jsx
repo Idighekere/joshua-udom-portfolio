@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
@@ -53,7 +52,7 @@ const Contact = () => {
           <h2 className="text-2xl md:text-3xl font-bold">Start a Project</h2>
           <div className="h-1 w-24 bg-primary-500 mx-auto rounded-full"></div>
           <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
-            Have a project in mind? Let's create something amazing together.
+            Have a project in mind? Let&apos;s create something amazing together.
             Reach out for design projects, brand consultation, or just to say
             hello.
           </p>
@@ -77,12 +76,13 @@ const Contact = () => {
               href={link.link}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={link.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className={`flex flex-col items-center justify-center p-2 ${glowCardClass}  transition-all duration-300 group ${link.color} hover:border-transparent cursor-pointer`}
+              className={`flex flex-col items-center justify-center p-2 ${glowCardClass}  transition-colors duration-300 group ${link.color} hover:border-transparent cursor-pointer`}
             >
               <div className=" rounded-full  transition-colors ">
                 <HugeiconsIcon icon={link.icon} size={26} color="white" />

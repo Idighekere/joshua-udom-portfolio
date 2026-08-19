@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { client } from '../lib/sanity'
 
 // In-memory cache: key -> { data, timestamp }
@@ -25,7 +25,9 @@ export function prefetch (query, params = {}) {
 
 export function useSanityData (query, params = {}) {
   const key = getCacheKey(query, params)
+  const paramsKey = JSON.stringify(params)
   const cached = cache.get(key)
+  const cachedRef = useRef(cached)
 
   const [data, setData] = useState(cached?.data ?? null)
   const [loading, setLoading] = useState(!cached)
@@ -37,7 +39,7 @@ export function useSanityData (query, params = {}) {
     const fetchData = async () => {
       try {
         // If we have cached data, show it immediately but still revalidate
-        if (!cached) setLoading(true)
+        if (!cachedRef.current) setLoading(true)
 
         const result = await client.fetch(query, params)
 
@@ -56,8 +58,10 @@ export function useSanityData (query, params = {}) {
     }
 
     // If cache is fresh, skip the fetch entirely
-    if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
-      setData(cached.data)
+    const fresh = cache.get(key)
+    if (fresh && Date.now() - fresh.timestamp < CACHE_TTL) {
+      cachedRef.current = fresh
+      setData(fresh.data)
       setLoading(false)
       return
     }
@@ -67,7 +71,7 @@ export function useSanityData (query, params = {}) {
     return () => {
       cancelled = true
     }
-  }, [query, JSON.stringify(params)])
+  }, [query, paramsKey]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return { data, loading, error }
 }

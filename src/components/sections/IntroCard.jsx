@@ -72,9 +72,12 @@ const IntroCard = () => {
             className="lg:w-[45%] w-full aspect-square lg:aspect-auto lg:self-stretch relative"
           >
             <LazyLoadImage
-              src="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?q-80"
+              src="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-1000,q-80"
               effect="blur"
               alt="Joshua Udom"
+              width="1000"
+              height="1000"
+              decoding="async"
               className="w-full h-full object-cover absolute inset-0"
               wrapperClassName="!block w-full h-full"
             />

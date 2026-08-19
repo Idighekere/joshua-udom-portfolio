@@ -9,7 +9,7 @@ import { GlowSection } from "../components/ui/GlowCard";
 const categories = [
   { name: "All", category: "all" },
   { name: "Flyer Designs", category: "flyer" },
-  { name: "Church Designs", category: "church" },
+  // { name: "Church Designs", category: "church" },
   { name: "Social Media Designs", category: "social" },
   { name: "Event Branding", category: "event branding" },
 ];

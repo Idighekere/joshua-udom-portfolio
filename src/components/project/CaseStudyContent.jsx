@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react'
-import { urlFor } from '../../lib/sanity'
+import { urlForOrNull } from '../../lib/sanity'
 
 const components = {
     types: {
@@ -7,10 +7,12 @@ const components = {
             if (!value?.asset?._ref) {
                 return null
             }
+            const src = urlForOrNull(value, { width: 800, fit: 'max' })
+            if (!src) return null
             return (
             <figure className="my-8">
               <img
-                src={urlFor(value).width(800).fit('max').auto('format').url()}
+                src={src}
                 alt={value.alt || 'Project Image'}
                 className="rounded-xl !mx-auto w-full !max-w-xl h-auto border border-neutral-800"
               />

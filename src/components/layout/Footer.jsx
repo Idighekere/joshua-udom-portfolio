@@ -1,4 +1,3 @@
-import React from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUp01Icon } from "@hugeicons/core-free-icons";
 
@@ -24,6 +23,7 @@ const Footer = () => {
 
         <button
           onClick={scrollToTop}
+          aria-label="Back to top"
           className="p-3 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors group"
         >
           <HugeiconsIcon icon={ArrowUp01Icon} size={20} color="currentColor" className="group-hover:-translate-y-1 transition-transform" />

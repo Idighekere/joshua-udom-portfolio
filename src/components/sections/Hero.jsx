@@ -19,7 +19,7 @@ const Hero = () => {
             <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
           </span>
-          Available for work
+          Open to work
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -31,7 +31,7 @@ const Hero = () => {
           <span className="font-serif text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-white italic">
             functional designs
           </span>{" "}
-          that work.
+          that deliver results.
         </motion.h1>
 
         <motion.div

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Lightbox from "yet-another-react-lightbox";

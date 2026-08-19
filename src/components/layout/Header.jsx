@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -100,7 +100,7 @@ const Header = () => {
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`w-full flex items-center justify-between px-6 rounded-full transition-all duration-300 backdrop-blur-md ${
+        className={`w-full flex items-center justify-between px-6 rounded-full transition-[background-color,border-color] duration-300 backdrop-blur-md ${
           scrolled
             ? "max-w-5xl bg-black/50 border border-primary-500/20 py-4"
             : "max-w-4xl bg-transparent border border-transparent py-2.5"
@@ -131,6 +131,9 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
           className="md:hidden p-2 text-white z-50 relative"
         >
           <AnimatePresence mode="wait" initial={false}>
@@ -165,6 +168,7 @@ const Header = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
+              id="mobile-menu"
               className="absolute top-full left-0 right-0 mt-2 mx-4 p-4 bg-neutral-900/90 backdrop-blur-xl border border-neutral-800 rounded-2xl md:hidden overflow-hidden"
             >
               <div className="flex flex-col gap-2">

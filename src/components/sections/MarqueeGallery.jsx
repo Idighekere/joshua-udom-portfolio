@@ -1,7 +1,7 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 import { Link } from "react-router-dom";
-import { urlFor } from "../../lib/sanity";
+import { urlForOrNull } from "../../lib/sanity";
 import { useProjects } from "../../hooks/useProjects";
 
 const SPEED = 55;
@@ -77,6 +77,7 @@ const MarqueeCard = ({ src, title, slug, onClick }) => {
       <div
         role="button"
         tabIndex={0}
+        aria-label={title ? `View ${title}` : "View design"}
         onClick={onClick}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -155,17 +156,14 @@ const MarqueeGallery = ({ items }) => {
     items && items.length > 0
       ? items
       : (projects || [])
-          .filter((p) => p.featuredImage)
+          .filter((p) => p.featuredImage?.asset?._ref)
           .map((p) => ({
             key: p._id || p.slug?.current || p.title,
             title: p.title,
             slug: p.slug?.current,
-            src: urlFor(p.featuredImage)
-              .width(640)
-              .quality(80)
-              .auto("format")
-              .url(),
-          }));
+            src: urlForOrNull(p.featuredImage, { width: 640, quality: 80 }),
+          }))
+          .filter((item) => item.src);
 
   const source = derived.length > 0 ? derived : fallbackCards;
 

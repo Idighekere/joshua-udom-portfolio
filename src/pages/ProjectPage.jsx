@@ -12,14 +12,18 @@ import CaseStudyContent from "../components/project/CaseStudyContent";
 import MarqueeGallery from "../components/sections/MarqueeGallery";
 import { glowCardClass, TopGlow } from "../components/ui/GlowCard";
 import { getCategoryLabel } from "../utils/categoryLabel";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import { useState, useRef, useEffect } from "react";
-import { urlFor } from "../lib/sanity";
+import { useState, useRef, useEffect, lazy, Suspense } from "react";
+import { urlForOrNull } from "../lib/sanity";
 import { motion, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeft02Icon, ArrowRight02Icon } from "@hugeicons/core-free-icons";
-import emailjs from "@emailjs/browser";
+
+// Load the lightbox styles only when the lightbox is first opened.
+const Lightbox = lazy(() =>
+  import("yet-another-react-lightbox").then((module) =>
+    import("yet-another-react-lightbox/styles.css").then(() => module),
+  ),
+);
 
 const ProjectPage = () => {
   const { slug } = useParams();
@@ -53,6 +57,7 @@ const ProjectPage = () => {
     setStatus(null);
 
     try {
+      const emailjs = (await import("@emailjs/browser")).default;
       await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -86,10 +91,12 @@ const ProjectPage = () => {
       </div>
     );
 
-  const slides =
-    project.gallery?.map((img) => ({
-      src: urlFor(img).width(1920).quality(80).auto("format").url(),
-    })) || [];
+  const galleryImages =
+  project.gallery
+    ?.map((img) => urlForOrNull(img, { width: 640, quality: 80 }))
+    .filter(Boolean) || [];
+
+const slides = galleryImages.map((src) => ({ src }));
 
   return (
     <div className="min-h-screen text-white bg-black">
@@ -125,12 +132,9 @@ const ProjectPage = () => {
             {/* Main Content */}
             <div className="space-y-12 lg:col-span-2">
               <div className="my-8 flex justify-center">
-                {project.featuredImage && (
+                {urlForOrNull(project.featuredImage, { width: 700, quality: 85 }) && (
                   <img
-                    src={urlFor(project.featuredImage)
-                      .width(700)
-                      .quality(85)
-                      .url()}
+                    src={urlForOrNull(project.featuredImage, { width: 700, quality: 85 })}
                     alt={project.title}
                     className="max-w-md w-full h-auto rounded-md"
                   />
@@ -145,20 +149,16 @@ const ProjectPage = () => {
               )}
 
               {/* Gallery — infinite marquee */}
-              {project.gallery && project.gallery.length > 0 && (
+              {galleryImages.length > 0 && (
                 <div className="space-y-6">
                   <h3 className="text-xl md:text-2xl font-bold">Project Gallery</h3>
                   <MarqueeGallery
-                    items={project.gallery.map((img, idx) => ({
+                    items={galleryImages.map((src, idx) => ({
                       key: `g-${idx}`,
-                      src: urlFor(img)
-                        .width(640)
-                        .quality(80)
-                        .auto("format")
-                        .url(),
+                      src,
                       onClick: () => {
-                        setPhotoIndex(idx);
-                        setLightboxOpen(true);
+                        setPhotoIndex(idx)
+                        setLightboxOpen(true)
                       },
                     }))}
                   />
@@ -240,10 +240,10 @@ const ProjectPage = () => {
                     ) : (
                       <motion.div
                         key="form"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
                       >
                         <div className="flex items-center justify-between mb-4">
                           <h4 className="text-xs md:text-sm font-bold text-white">
@@ -269,6 +269,7 @@ const ProjectPage = () => {
                             type="text"
                             name="from_name"
                             required
+                            aria-label="Your name"
                             placeholder="Your name"
                             className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-xs md:text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors"
                           />
@@ -276,6 +277,7 @@ const ProjectPage = () => {
                             type="email"
                             name="from_email"
                             required
+                            aria-label="Your email"
                             placeholder="your@email.com"
                             className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-xs md:text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors"
                           />
@@ -283,6 +285,7 @@ const ProjectPage = () => {
                             type="text"
                             name="subject"
                             required
+                            aria-label="Project subject"
                             placeholder="Project subject"
                             className="w-full px-3 py-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-white text-xs md:text-sm placeholder-neutral-500 focus:outline-none focus:border-primary-500 transition-colors"
                           />
@@ -291,6 +294,7 @@ const ProjectPage = () => {
                             required
                             rows={3}
                             ref={messageRef}
+                            aria-label="Message"
                             onChange={(e) => {
                               e.target.style.height = "auto";
                               e.target.style.height = e.target.scrollHeight + "px";
@@ -301,7 +305,7 @@ const ProjectPage = () => {
 
                           {status === "success" && (
                             <p className="text-xs md:text-sm text-green-400">
-                              Message sent! I'll be in touch soon.
+                              Message sent! I&apos;ll be in touch soon.
                             </p>
                           )}
                           {status === "error" && (
@@ -313,7 +317,7 @@ const ProjectPage = () => {
                           <button
                             type="submit"
                             disabled={sending}
-                            className="w-full px-4 py-2.5 rounded-full text-xs md:text-sm font-medium bg-gradient-to-r from-primary-500 to-primary-400 text-white shadow-lg shadow-primary-500/20 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                            className="w-full px-4 py-2.5 rounded-full text-xs md:text-sm font-medium bg-gradient-to-r from-primary-500 to-primary-400 text-white shadow-lg shadow-primary-500/20 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
                           >
                             {sending ? "Sending..." : "Send Message"}
                           </button>
@@ -385,12 +389,14 @@ const ProjectPage = () => {
 
       <Footer />
 
-      <Lightbox
-        open={lightboxOpen}
-        close={() => setLightboxOpen(false)}
-        index={photoIndex}
-        slides={slides}
-      />
+      <Suspense fallback={null}>
+        <Lightbox
+          open={lightboxOpen}
+          close={() => setLightboxOpen(false)}
+          index={photoIndex}
+          slides={slides}
+        />
+      </Suspense>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { urlFor } from "../../lib/sanity";
+import { urlForOrNull } from "../../lib/sanity";
 import Badge from "../ui/Badge";
 import { glowCardClass, TopGlow } from "../ui/GlowCard";
 import { getCategoryLabel } from "../../utils/categoryLabel";
@@ -9,12 +9,16 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ProjectCard = ({ project }) => {
   const slug = project.slug?.current;
+  const imageSrc = urlForOrNull(project.featuredImage, {
+    width: 800,
+    quality: 80,
+  });
 
   const cardContent = (
     <>
-      {project.featuredImage && (
+      {imageSrc && (
         <LazyLoadImage
-          src={urlFor(project.featuredImage).width(800).quality(80).auto("format").url()}
+          src={imageSrc}
           alt={project.title}
           effect="blur"
           className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"

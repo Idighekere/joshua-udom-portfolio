@@ -1,5 +1,3 @@
-import React from 'react'
-
 const LoadingSpinner = () => {
       let circleCommonClasses = 'h-2.5 w-2.5 bg-current rounded-full';
 
