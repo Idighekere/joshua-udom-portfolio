@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-A high-performance, architecturally sound portfolio website tailored for a professional Graphic Designer. This project demonstrates a robust integration between a modern React frontend and a Headless CMS (Sanity.io), allowing for dynamic content management, real-time updates, and an immersive user experience through sophisticated motion design. 🎨
+A high-performance, architecturally sound portfolio website tailored for a professional Visual Designer. This project demonstrates a robust integration between a modern React frontend and a Headless CMS (Sanity.io), allowing for dynamic content management, real-time updates, and an immersive user experience through sophisticated motion design. 🎨
 
 ## Key Features
 

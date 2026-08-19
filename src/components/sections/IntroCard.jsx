@@ -1,5 +1,4 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import { glowCardClass, TopGlow } from "../ui/GlowCard";
@@ -32,7 +31,10 @@ const IntroCard = () => {
               transition={{ delay: 0.2 }}
               className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs md:text-sm font-medium w-fit"
             >
-              Hello there <span className="wave-hand" aria-hidden="true">👋</span>
+              Hello there{" "}
+              <span className="wave-hand" aria-hidden="true">
+                👋
+              </span>
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-none font-bold mb-4 leading-tight text-white /whitespace-nowrap">
@@ -43,13 +45,13 @@ const IntroCard = () => {
             </h1>
 
             <h2 className="text-2xl md:text-3xl text-neutral-300 font-medium mb-4">
-              Graphic Designer
+              Visual Designer
             </h2>
 
             <p className="text-lg md:text-xl text-neutral-400 mb-8 leading-relaxed">
-              Having a keen eye for aesthetics, I make sure that every design I
-              create is not only visually pleasing but also serves a clear
-              strategic purpose.
+              {
+                "Having experience that spans over 2+ years in creating functional designs, I've worked on event branding, social content, and campaigns for businesses. My objective for every project is mostly about the result-driving action someone takes after seeing the work."
+              }
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 relative z-10">

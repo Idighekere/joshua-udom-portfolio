@@ -10,10 +10,10 @@ import {
 import { glowCardClass, GlowSection } from "../ui/GlowCard";
 
 const tools = [
+  { name: "Figma", icon: FigmaIcon },
   { name: "CorelDraw", icon: ColorsIcon },
   { name: "Photoshop", icon: AdobePhotoshopIcon },
   { name: "Illustrator", icon: AdobeIllustratorIcon },
-  { name: "Figma", icon: FigmaIcon },
 ];
 
 const stats = [

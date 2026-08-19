@@ -124,7 +124,7 @@ const ProjectPage = () => {
           <div className="grid grid-cols-1 gap-12 /px-6 mx-auto mt-12 max-w-7xl /md:px-12 /lg:px-20 lg:grid-cols-3">
             {/* Main Content */}
             <div className="space-y-12 lg:col-span-2">
-              <div className="my-8">
+              <div className="my-8 flex justify-center">
                 {project.featuredImage && (
                   <img
                     src={urlFor(project.featuredImage)
