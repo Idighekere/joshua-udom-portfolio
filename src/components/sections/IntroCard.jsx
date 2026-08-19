@@ -81,18 +81,18 @@ const IntroCard = () => {
                 media="(min-width: 640px) and (max-width: 1023px)"
                 srcSet="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-700,q-85"
               />
-              {/* Desktop >= 1024px */}
+              {/* Desktop >= 1024px (portrait displays at ~460px, so w-500 suffices) */}
               <source
                 media="(min-width: 1024px)"
-                srcSet="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-1000,q-85"
+                srcSet="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-500,q-85"
               />
               {/* Fallback */}
               <img
-                src="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-1000,q-85"
+                src="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-500,q-85"
                 alt="Joshua Udom"
-                width="1000"
-                height="1000"
-                fetchpriority="high"
+                width="500"
+                height="500"
+                loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover absolute inset-0"
               />
