@@ -28,8 +28,8 @@ const Hero = () => {
           className="text-4xl sm:text-5xl md:text-7xl font-medium tracking-tight leading-[1.1] text-white max-w-4xl mx-auto"
         >
           Partnering with brands to create{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-white italic">
-            strategic designs
+          <span className="font-serif text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-white italic">
+            functional designs
           </span>{" "}
           that work.
         </motion.h1>

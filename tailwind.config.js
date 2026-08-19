@@ -14,7 +14,8 @@ export default {
       },
       fontFamily: {
         sans: `"Satoshi", sans-serif`,
-        satoshi: `"Satoshi", sans-serif`
+        satoshi: `"Satoshi", sans-serif`,
+        serif: `"Instrument Serif", serif`
       },
       animation: {
         bounce200: 'bounce 1s infinite 200ms',
