@@ -1,4 +1,3 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import { glowCardClass, TopGlow } from "../ui/GlowCard";
@@ -71,16 +70,33 @@ const IntroCard = () => {
             transition={{ duration: 0.8 }}
             className="lg:w-[45%] w-full aspect-square lg:aspect-auto lg:self-stretch relative"
           >
-            <LazyLoadImage
-              src="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-1000,q-80"
-              effect="blur"
-              alt="Joshua Udom"
-              width="1000"
-              height="1000"
-              decoding="async"
-              className="w-full h-full object-cover absolute inset-0"
-              wrapperClassName="!block w-full h-full"
-            />
+            <picture className="absolute inset-0 w-full h-full">
+              {/* Mobile < 640px */}
+              <source
+                media="(max-width: 639px)"
+                srcSet="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-400,q-80"
+              />
+              {/* Tablet 640px - 1023px */}
+              <source
+                media="(min-width: 640px) and (max-width: 1023px)"
+                srcSet="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-700,q-85"
+              />
+              {/* Desktop >= 1024px */}
+              <source
+                media="(min-width: 1024px)"
+                srcSet="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-1000,q-85"
+              />
+              {/* Fallback */}
+              <img
+                src="https://ik.imagekit.io/idighekere/Photoroom-20240414_134760.png?tr=f-webp,w-1000,q-85"
+                alt="Joshua Udom"
+                width="1000"
+                height="1000"
+                fetchpriority="high"
+                decoding="async"
+                className="w-full h-full object-cover absolute inset-0"
+              />
+            </picture>
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 rounded-t-3xl lg:rounded-tl-none border-t border-white/30 [-webkit-mask-image:linear-gradient(to_bottom,black,black_4px,transparent)] [mask-image:linear-gradient(to_bottom,black,black_4px,transparent)]"
